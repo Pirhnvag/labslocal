@@ -2,9 +2,10 @@
 def hostsIPsMap = [
   'QA1': '10.10.10.10',
   'Q2': '20.20.20.20'
+  
 ]
-
-def SERVER_DEPLOY = hostsIPsMap[DESTINO]
+def DESTINO=null
+SERVER_DEPLOY = hostsIPsMap[DESTINO]
 //def x = 'SERVER_DEPLOY$'
 pipeline { 
     agent any 
