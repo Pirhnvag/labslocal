@@ -1,5 +1,6 @@
 #!groovy
-
+println "What is your name?"
+println "Your name is ${System.in.newReader().readLine()}"
 def hostsIPsMap = [
   'QA1': '10.10.10.10',
   'QA2': '20.20.20.20'
