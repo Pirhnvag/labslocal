@@ -7,7 +7,7 @@ def hostsIPsMap = [
 
 ]
 def SERVER_DEPLOY=null 
-SERVER_DEPLOY = hostsIPsMap["SERVER_DEPLOY"]
+SERVER_DEPLOY = hostsIPsMap["$SERVER_DEPLOY"]
 
 
 pipeline { 
