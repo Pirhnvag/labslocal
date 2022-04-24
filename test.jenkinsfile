@@ -20,6 +20,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
+              script{
               print "SERVER_DEPLOY:" + SERVER_DEPLOY
                if ("$(SERVER_DEPLOY)" == '10.10.10.10') {
                  sh """
@@ -29,6 +30,7 @@ pipeline {
                  sh """
                  ls -l
                  """
+                  }
                }
             }
         }
