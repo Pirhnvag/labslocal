@@ -8,7 +8,7 @@ def job = pipelineJob('test') {
     parameters {
     stringParam('perfil_fuse', 'q9-servicio-test', 'Favor ingresar perfil')
     booleanParam('cargarproperties',false, 'indicar si desea cargar archivo de propiedades.')
-    [$class: 'ExtendedChoiceParameterValue', name: 'param_name', value: 'param_value']
+    
     }
     definition {
         cps {
