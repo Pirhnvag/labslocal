@@ -1,8 +1,4 @@
-build job:'NameOfTheJob', parameters: [
-      string(name: 'FirstOption', value: "test"),
-      string(name: 'AnotherOption', value: "test12")
-]
-//def job = pipelineJob('test') {
+def job = pipelineJob('test') {
 
     definition {
         cps {
@@ -14,7 +10,8 @@ build job:'NameOfTheJob', parameters: [
     parameters {
      stringParam('perfil_fuse', 'q9-servicio-test', 'Favor ingresar perfil')
      booleanParam('cargarproperties',false, 'indicar si desea cargar archivo de propiedades.')
-    }
+     choiceParam('SERVER_DEPLOY', ['10.10.10.10', '20.20.20.20'])
+     }
 
     definition {
         cps {
@@ -22,5 +19,5 @@ build job:'NameOfTheJob', parameters: [
             sandbox()
         }
     }
-
+}
 def jobDescription = "job demo jenkins onprem"
