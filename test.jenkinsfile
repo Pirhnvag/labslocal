@@ -7,9 +7,9 @@ def hostsIPsMap = [
 
 ]
 def SERVER_DEPLOY=null 
-def SERVER_DEPLOY = hostsIPsMap[SERVER_DEPLOY]
+SERVER_DEPLOY = hostsIPsMap[SERVER_DEPLOY]
 
-
+import  choiceParam
 pipeline { 
     agent any 
     

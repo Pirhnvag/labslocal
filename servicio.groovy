@@ -18,3 +18,4 @@ def job = pipelineJob('test') {
     }
 }
 def jobDescription = "job demo jenkins onprem"
+export choiceParam
