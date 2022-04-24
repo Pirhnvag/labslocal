@@ -22,5 +22,5 @@ build job:'NameOfTheJob', parameters: [
             sandbox()
         }
     }
-}
+
 def jobDescription = "job demo jenkins onprem"
