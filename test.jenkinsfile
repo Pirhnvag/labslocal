@@ -11,7 +11,8 @@ def hostsIPsMap = [
 
 
 def SERVER_DEPLOY=null 
-SERVER_DEPLOY = hostsIPsMap[""]
+SERVER_DEPLOY = hostsIPsMap[]
+
 
 
 
