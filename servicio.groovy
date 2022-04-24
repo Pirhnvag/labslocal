@@ -1,7 +1,7 @@
 def job = pipelineJob('Prod/test') {
     definition {
         cps {
-            script(readFileFromWorkspace('/test.jenkinsfile'))
+            script(readFileFromWorkspace('test.jenkinsfile'))
             sandbox()
         }
     }
@@ -12,7 +12,7 @@ def job = pipelineJob('Prod/test') {
     }
     definition {
         cps {
-            script(readFileFromWorkspace('/test.jenkinsfile'))
+            script(readFileFromWorkspace('test.jenkinsfile'))
             sandbox()
         }
     }
