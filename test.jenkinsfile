@@ -1,39 +1,124 @@
 #!groovy
-def hostsIPsMap = [
-  'QA1': '10.10.10.10',
-  'Q2': '20.20.20.20'
-]
 
+def hostsIPsMap = [
+        'ppp': '10.10.10.10',
+        'ppp':'20.20.20.20'
+      
+]
 def SERVER_DEPLOY=null
 SERVER_DEPLOY = hostsIPsMap[DESTINO]
-//def x = 'SERVER_DEPLOY$'
-pipeline { 
-    agent any 
-    options {
-        skipStagesAfterUnstable()
-    }
 
+
+
+pipeline {
+  agent any
+ 
+    environment {
+          branch="${branch}"
+          credencialprodlinux = ""
+          pathfuse="${env.pathfuse}"
+          profile="${env.perfil_fuse}"
+          propertiesboolean="${env.cargarproperties}"
+          nexusurl="http://10.10.10.10"
+          redhatgaurl="http://20.20.20.20"
+          reponame="test"
+          jobname="${env.JOB_NAME}"
+          repobash="test"
+          namesonar="test"
+          ambiente="test"
+          
+        }
+
+    
+    options {
+        timestamps()
+        timeout(time: 20, unit: 'MINUTES')
+        disableConcurrentBuilds()
+    }    
+
+    tools {
+        maven 'Maven'
+    }
+  
     stages {
-        stage('Build') { 
-            steps { 
-                echo 'holahola' 
-            }
+            stage('Clone') {
+                steps {
+                       
+                        withCredentials([usernamePassword(credentialsId: 'jenkinsfuseprod', passwordVariable: 'password', usernameVariable: 'userpass')]) {
+                        dir('servicio') {      
+                            checkout([$class: 'GitSCM', branches: [[name: env.tag]], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'git/'+ env.reponame +'.git']]]) 
+                        }  
+                        dir('storage') {
+                             print "SERVER DEPLOY : " + SERVER_DEPLOY
+                             checkout([$class: 'GitSCM', branches: [[name: "master"]], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: ''+ env.repobash +'.git']]])
+                             sh "sshpass -p $password scp -P 1313 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ss ss.sh /jenkins.sh Fuse/properties.sh jenkins@${SERVER_DEPLOY}:/home/COOPEUCH1.CL/jenkins/script/"    
+                        }
+                     }           
+                   }
+                }
+        
+            stage('Build') {
+                steps {
+                    dir('servicio') {
+                    sh 'mvn clean compile'
+             }   
         }
-        stage('Deploy') {
-            steps {
-              script{
-              print "SERVER_DEPLOY :" + SERVER_DEPLOY
-               if ("${SERVER_DEPLOY}" == '10.10.10.10') {
-                 sh """
-                 ls
-                 """
-               } else {
-                 sh """
-                 ls -l
-                 """
+     }
+            stage('deploy nexus') {
+                      steps {
+                              script
+                              {
+                                  dir('servicio') {
+                                      sh """
+                                      
+                                      sed -i 's!\${nexus.ambiente}!!' pom.xml
+                                      sed -i 's!\${nexus.url}!\$}!' pom.xml
+                                      sed -i 's!\${redhat.ga.url}!\${redhatgaurl}!' pom.xml
+                                      mvn clean deploy
+                                      """
+                                      }
+                              }
+                          }       
                   }
-               }
-            }
-        }
+              
+            stage('deploy fuse') {
+                    steps {
+                     withCredentials([usernamePassword(credentialsId: 'jenkinsfuseprod', passwordVariable: 'password', usernameVariable: 'userpass')]) 
+                       { 
+                            script{    
+                                    dir('servicio') {  
+                                        
+                                          print "SERVER DEPLOY : " + SERVER_DEPLOY
+                                           if ("${SERVER_DEPLOY}" == '10.10.101.01') {
+                                                        sh '''  
+                                                            groupid=$(grep -oP '(?<=<groupId>)cl.*(?=</groupId)' pom.xml)
+                                                            artefactid=$(grep -oP '(?<=<artifactId>)servicio.*(?=</artifactId)' pom.xml)
+                                                            verion=$(grep -oP '(?<=<version>).*(?=</version)' pom.xml | head -n 1)
+                                                            espacio=' '
+                                                            parametros=$groupid$espacio$artefactid$espacio$verion
+                                                            echo $parametros
+                                                        
+                                                            sshpass -p \${password} ssh -p 1313 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null jenkins@10.10.10.10 sh /home//jenkins/script.sh \$parametros \${profile}
+                                                        '''
+                                            } else {
+                                                        sh '''  
+                                                            groupid=$(grep -oP '(?<=<groupId>)cl.*(?=</groupId)' pom.xml)
+                                                            artefactid=$(grep -oP '(?<=<artifactId>)servicio.*(?=</artifactId)' pom.xml)
+                                                            verion=$(grep -oP '(?<=<version>).*(?=</version)' pom.xml | head -n 1)
+                                                            espacio=' '
+                                                            parametros=$groupid$espacio$artefactid$espacio$verion
+                                                            echo $parametros
+                                                        
+                                                            sshpass -p \${password} ssh -p 1313 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null jenkins@10.10.10.10 sh /home//jenkins/script/jenkin.sh \$parametros \${profile}
+                                                        '''
+                                            } 
+                                          
+                                         
+                                          
+                                    }
+                                }
+                                }
+                              }                                         
+                   }  
     }
 }
