@@ -21,3 +21,47 @@ def job = pipelineJob('test') {
     }
 }
 def jobDescription = "job demo jenkins onprem"
+def hostsIPsMap = [
+  'QA1': '10.10.10.10',
+  'QA2': '20.20.20.20'
+
+
+
+]
+
+
+def SERVER_DEPLOY=null 
+SERVER_DEPLOY = hostsIPsMap[]
+
+
+
+
+pipeline { 
+    agent any 
+    
+
+    stages {
+        stage('Build') { 
+            steps { 
+                echo 'holahola' 
+            }
+        }
+        stage('Deploy') {
+            steps {
+
+              script{
+              print "SERVER_DEPLOY: " + SERVER_DEPLOY
+               if ("${SERVER_DEPLOY}" == '10.10.10.10') {
+                 sh '''
+                 ls
+                 '''
+               } else {
+                 sh '''
+                 ls -l
+                 '''
+                  }
+               }
+            }
+        }
+    }
+}
