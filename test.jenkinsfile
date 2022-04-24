@@ -7,6 +7,9 @@ def hostsIPsMap = [
 def DESTINO=null
 SERVER_DEPLOY = hostsIPsMap[DESTINO]
 
+
+
+
 pipeline { 
     agent any 
     
