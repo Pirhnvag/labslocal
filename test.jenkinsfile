@@ -7,10 +7,7 @@ def hostsIPsMap = [
 
 
 ]
-System.out.println("Enter your username: ");
-Scanner scanner = new Scanner(System.in);
-String username = scanner.nextLine();
-System.out.println("Your username is " + username);
+
 
 def SERVER_DEPLOY=null 
 SERVER_DEPLOY = hostsIPsMap[]
@@ -30,7 +27,7 @@ pipeline {
             steps {
 
               script{
-              print "SERVER_DEPLOY : " + SERVER_DEPLOY
+              print "SERVER_DEPLOY : " + SERVER_DEPLOY[choiceParam]
                if ("${SERVER_DEPLOY}" == '10.10.10.10') {
                  sh '''
                  ls
