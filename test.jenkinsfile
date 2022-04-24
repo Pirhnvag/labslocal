@@ -4,9 +4,8 @@ def hostsIPsMap = [
   'Q2': '20.20.20.20'
 
 ]
-def DESTINO=null
-SERVER_DEPLOY = hostsIPsMap[DESTINO]
-println "seleccione"
+def Destino=null
+SERVER_DEPLOY = hostsIPsMap[Destino]
 
 
 pipeline { 
