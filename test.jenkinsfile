@@ -26,12 +26,11 @@ pipeline {
               print "SERVER_DEPLOY : " + SERVER_DEPLOY
                if ("${SERVER_DEPLOY}" == '10.10.10.10') {
                  sh '''
-                 echo 'respuesta desde 10.10.10.10'
+                 ls
                  '''
-               }
-                else {
+               } else {
                  sh '''
-                 echo 'respuesta desde 20.20.20.20'
+                 ls -l
                  '''
                   }
                }

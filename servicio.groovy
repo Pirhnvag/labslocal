@@ -1,4 +1,4 @@
-def job = pipelineJob('service_poc') {
+def job = pipelineJob('test') {
     definition {
         cps {
             script(readFileFromWorkspace('test.jenkinsfile'))
@@ -6,9 +6,9 @@ def job = pipelineJob('service_poc') {
         }
     }
     parameters {
-    stringParam('perfil_fuse', 'q5a-servicio-poc', 'Favor ingresar perfil')
-    booleanParam('cargarproperties',false, 'Indicar si desea cargar archivo de propiedades.')
-    choiceParam('SERVER_DEPLOY', ['10.10.10.10', '20.20.20.20', '30.30.30.30'])
+    stringParam('perfil_fuse', 'q9-servicio-test', 'Favor ingresar perfil')
+    booleanParam('cargarproperties',false, 'indicar si desea cargar archivo de propiedades.')
+    choiceParam('SERVER_DEPLOY', ['10.10.10.10', '20.20.20.20', 'option 3'])
     }
     definition {
         cps {
@@ -17,4 +17,4 @@ def job = pipelineJob('service_poc') {
         }
     }
 }
-def jobDescription = "job poc"
+def jobDescription = "job demo jenkins onprem"
