@@ -1,11 +1,3 @@
-def hostsIPsMap = [
-  'QA1': '10.10.10.10',
-  'Q2': '20.20.20.20'
-
-
-]
-def SERVER_DEPLOY=null 
-SERVER_DEPLOY = hostsIPsMap["$SERVER_DEPLOY"]
 def job = pipelineJob('test') {
     definition {
         cps {
