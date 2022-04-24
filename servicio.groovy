@@ -1,4 +1,4 @@
-def job = pipelineJob('Prod/test') {
+def job = pipelineJob('test') {
     definition {
         cps {
             script(readFileFromWorkspace('test.jenkinsfile'))
