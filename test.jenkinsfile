@@ -29,14 +29,13 @@ pipeline {
                  echo 'respuesta desde 10.10.10.10'
                  '''
                }
-               
-               } else {
+                else {
                  sh '''
-                 echo 'error'
+                 echo 'respuesta desde 20.20.20.20'
                  '''
                   }
                }
             }
         }
-    } 
+    }
 }
