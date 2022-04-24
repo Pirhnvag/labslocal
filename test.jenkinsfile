@@ -29,10 +29,7 @@ pipeline {
                  echo 'respuesta desde 10.10.10.10'
                  '''
                }
-               if ("${SERVER_DEPLOY}" == '20.20.20.20') {
-                 sh '''
-                 echo 'respuesta desde 20.20.20.20'
-                 '''
+               
                } else {
                  sh '''
                  echo 'error'
