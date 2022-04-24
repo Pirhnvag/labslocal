@@ -8,7 +8,7 @@ def job = pipelineJob('test') {
     parameters {
      stringParam('perfil_fuse', 'q9-servicio-test', 'Favor ingresar perfil')
      booleanParam('cargarproperties',false, 'indicar si desea cargar archivo de propiedades.')
-     choiceParam('SERVER_DEPLOY', ['10.10.10.10', '20.20.20.20'])
+     choiceParam('env.SERVER_DEPLOY', ['10.10.10.10', '20.20.20.20'])
      }
     definition {
         cps {
@@ -18,4 +18,3 @@ def job = pipelineJob('test') {
     }
 }
 def jobDescription = "job demo jenkins onprem"
-export choiceParam
