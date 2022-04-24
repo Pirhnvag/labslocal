@@ -26,15 +26,20 @@ pipeline {
               print "SERVER_DEPLOY : " + SERVER_DEPLOY
                if ("${SERVER_DEPLOY}" == '10.10.10.10') {
                  sh '''
-                 ls
+                 echo 'respuesta desde 10.10.10.10'
+                 '''
+               }
+               if ("${SERVER_DEPLOY}" == '20.20.20.20') {
+                 sh '''
+                 echo 'respuesta desde 20.20.20.20'
                  '''
                } else {
                  sh '''
-                 ls -l
+                 echo 'error'
                  '''
                   }
                }
             }
         }
-    }
+    } 
 }
