@@ -1,18 +1,18 @@
-def job = pipelineJob('Prod/servicio') {
+def job = pipelineJob('Prod/test') {
     definition {
         cps {
-            script(readFileFromWorkspace('src/main/groovy/projects/Prod/servicio.jenkinsfile'))
+            script(readFileFromWorkspace('/test.jenkinsfile'))
             sandbox()
         }
     }
     parameters {
-    stringParam('perfil_fuse', 'prod-servicio', 'Favor ingresar perfil')
+    stringParam('perfil_fuse', 'q9-servicio-test', 'Favor ingresar perfil')
     booleanParam('cargarproperties',false, 'indicar si desea cargar archivo de propiedades.')
 
     }
     definition {
         cps {
-            script(readFileFromWorkspace('src/main/groovy/projects/Prod/servicio.jenkinsfile'))
+            script(readFileFromWorkspace('/test.jenkinsfile'))
             sandbox()
         }
     }

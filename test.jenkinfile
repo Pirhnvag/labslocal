@@ -11,13 +11,13 @@ pipeline {
     stages {
         stage('Build') {
         steps {
-                    sh 'ls'
+                    sh 'ls -l'
              }   
     stage('deploy fuse') {        
         steps {
           script{            
                 sh '''  
-                sshpass -p \$credentiales_PSW ssh jenkins@\$ipfuseqa sh /home/jenkins/script/jenkinsdeployfuse.sh \$parametros \${profile}
+                'ls'
                                             
                                           '''
                                           
