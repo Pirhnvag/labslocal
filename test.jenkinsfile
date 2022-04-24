@@ -15,12 +15,21 @@ pipeline {
     stages {
         stage('Build') { 
             steps { 
-                sh 'ls' 
+                echo 'holahola' 
             }
         }
         stage('Deploy') {
             steps {
-                sh 'ls -ltr'
+              print "SERVER_DEPLOY: " + SERVER_DEPLOY
+               if ("SERVER_DEPLOY" == '10.10.10.10') {
+                 sh '''
+                 ls
+                 '''
+               } else {
+                 sh '''
+                 ls -l
+                 '''
+               }
             }
         }
     }
