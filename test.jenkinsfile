@@ -6,6 +6,7 @@ def hostsIPsMap = [
 ]
 def DESTINO=null
 SERVER_DEPLOY = hostsIPsMap[DESTINO]
+println "seleccione"
 
 
 pipeline { 
