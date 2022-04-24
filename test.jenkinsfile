@@ -4,8 +4,7 @@ def hostsIPsMap = [
   'Q2': '20.20.20.20'
 
 ]
-def DESTINO=null
-SERVER_DEPLOY = hostsIPsMap[DESTINO]
+def SERVER_DEPLOY = hostsIPsMap[DESTINO]
 
 
 
@@ -23,7 +22,7 @@ pipeline {
         stage('Deploy') {
             steps {
               script{
-              print "SERVER_DEPLOY : " + 10.10.10.10
+              print "SERVER_DEPLOY : " + SERVER_DEPLOY
                if ("${SERVER_DEPLOY}" == '10.10.10.10') {
                  sh '''
                  ls
