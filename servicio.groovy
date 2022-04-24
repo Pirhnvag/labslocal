@@ -1,3 +1,4 @@
+export parameters.choiceParam
 def job = pipelineJob('test') {
     definition {
         cps {
@@ -11,8 +12,7 @@ def job = pipelineJob('test') {
      booleanParam('cargarproperties',false, 'indicar si desea cargar archivo de propiedades.')
      choiceParam('SERVER_DEPLOY', ['10.10.10.10', '20.20.20.20'])
      }
-def SERVER_DEPLOY=null 
-SERVER_DEPLOY = env.hostsIPsMap[choiceParam]
+
     definition {
         cps {
             script(readFileFromWorkspace('test.jenkinsfile'))
