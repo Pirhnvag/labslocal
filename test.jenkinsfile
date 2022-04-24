@@ -1,7 +1,5 @@
 #!groovy
-parameters {
- choiceParam('SERVER_DEPLOY', ['10.10.10.10', '20.20.20.20'])
-     }
+
 
 def hostsIPsMap = [
   'QA1': '10.10.10.10',
