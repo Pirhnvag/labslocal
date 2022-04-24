@@ -4,7 +4,7 @@ def hostsIPsMap = [
   'Q2': '20.20.20.20'
 
 ]
-def DESTINO=null
+
 def SERVER_DEPLOY=null 
 SERVER_DEPLOY = hostsIPsMap[DESTINO]
 
