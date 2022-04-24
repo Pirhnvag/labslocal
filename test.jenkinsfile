@@ -11,23 +11,28 @@ pipeline {
     options {
         skipStagesAfterUnstable()
     }
-    
+
     stages {
         stage('Build') { 
             steps { 
-                sh 'ls' 
-            }
-        }
-        stage('Test'){
-            steps {
-                sh 'ls'
+                echo 'holahola' 
             }
         }
         stage('Deploy') {
             steps {
-                sh 'ls '
+              script{
+              print "SERVER_DEPLOY:" + SERVER_DEPLOY
+               if ("${SERVER_DEPLOY}" == '10.10.10.10') {
+                 sh """
+                 ls
+                 """
+               } else {
+                 sh """
+                 ls -l
+                 """
+                  }
+               }
             }
         }
     }
 }
-
