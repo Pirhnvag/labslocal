@@ -5,11 +5,13 @@ def hostsIPsMap = [
   'QA2': '20.20.20.20'
 
 
+
+]
 System.out.println("Enter your username: ");
 Scanner scanner = new Scanner(System.in);
 String username = scanner.nextLine();
 System.out.println("Your username is " + username);
-]
+
 def SERVER_DEPLOY=null 
 SERVER_DEPLOY = hostsIPsMap[]
 
