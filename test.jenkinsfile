@@ -3,7 +3,7 @@ def hostsIPsMap = [
   'QA1': '10.10.10.10',
   'Q2': '20.20.20.20'
 ]
-def DESTINO = hostsIPsMap
+
 def SERVER_DEPLOY=null
 SERVER_DEPLOY = hostsIPsMap[DESTINO]
 //def x = 'SERVER_DEPLOY$'
