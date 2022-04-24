@@ -1,11 +1,3 @@
-def hostsIPsMap = [
-  'QA1': '10.10.10.10',
-  'Q2': '20.20.20.20'
-
-
-]
-def SERVER_DEPLOY=null 
-SERVER_DEPLOY = hostsIPsMap[DESTINO]
 def job = pipelineJob('test') {
     definition {
         cps {
@@ -16,7 +8,7 @@ def job = pipelineJob('test') {
     parameters {
     stringParam('perfil_fuse', 'q9-servicio-test', 'Favor ingresar perfil')
     booleanParam('cargarproperties',false, 'indicar si desea cargar archivo de propiedades.')
-    choiceParam("$DESTINO", ['10.10.10.10', '20.20.20.20', 'option 3'])
+    choiceParam('DEPLOY_SERVER', ['10.10.10.10', '20.20.20.20', 'option 3'])
     }
     definition {
         cps {
