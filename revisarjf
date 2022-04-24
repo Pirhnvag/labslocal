@@ -2,20 +2,9 @@ pipeline {
   agent any
   
    //environment {
-     // branch="${branch}"
-      //credentiales = credentials('jenkinsfuseqa')
-      //ipfuseqa="${env.IPFuseqaRoot}" 
-      //pathfuse="${env.pathfuse}"
-      //profile="${env.perfil_fuse}"
-      //propertiesboolean="${env.cargarproperties}"
-      //nexusurl="http://10.20.78.193:8081/nexus/content/repositories/jboss-fuse-qa"
-      //redhatgaurl="http://10.20.78.193:8081/nexus/content/repositories/redhat-ga-repository/"
-      //reponame="wscontroversias"
-      //jobname="${env.JOB_NAME}"
-      //repobash="storage"
-      //namesonar="wscontroversias_qa"
-      //ambiente="qa"
-
+     // AKKKKK
+      //JJJJJJJ
+      //
 
     }
     
