@@ -5,13 +5,14 @@ def job = pipelineJob('test') {
             sandbox()
         }
     }
-def SERVER_DEPLOY=null 
-SERVER_DEPLOY = hostsIPsMap[choiceParam]
+
     parameters {
      stringParam('perfil_fuse', 'q9-servicio-test', 'Favor ingresar perfil')
      booleanParam('cargarproperties',false, 'indicar si desea cargar archivo de propiedades.')
      choiceParam('SERVER_DEPLOY', ['10.10.10.10', '20.20.20.20'])
      }
+def SERVER_DEPLOY=null 
+SERVER_DEPLOY = env.hostsIPsMap[choiceParam]
     definition {
         cps {
             script(readFileFromWorkspace('test.jenkinsfile'))
