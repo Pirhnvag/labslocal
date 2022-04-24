@@ -1,19 +1,6 @@
 #!groovy
-
-def hostsIPsMap = [
-  'QA1': '10.10.10.10',
-  'Q2': '20.20.20.20'
-
-
-]
-def SERVER_DEPLOY=null 
-SERVER_DEPLOY = hostsIPsMap
-
-
 pipeline { 
     agent any 
-    
-
     stages {
         stage('Build') { 
             steps { 
