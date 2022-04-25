@@ -15,7 +15,7 @@ def job = pipelineJob('test') {
     parameters {
         gitParam('Branch') {
         description 'The Git branch to checkout'
-    t   ype 'BRANCH'
+        type 'BRANCH'
         defaultValue 'origin/master'
   }
 }
