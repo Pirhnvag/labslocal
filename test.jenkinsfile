@@ -3,8 +3,8 @@
 
 def hostsIPsMap = [
   'QA1': '10.10.10.10',
-  'QA2': '20.20.20.20'
-
+  'QA2': '20.20.20.20',
+  'QA3': '30.30.30.30'
 
 
 ]
@@ -23,7 +23,7 @@ pipeline {
     stages {
         stage('Build') { 
             steps { 
-                echo 'holahola' 
+                echo 'Build-test' 
             }
         }
         stage('Deploy') {
@@ -41,7 +41,7 @@ pipeline {
                  ls -l
                  '''
                   }
-                  else if ("${SERVER_DEPLOY}" == 'QA3')  {
+                else if ("${SERVER_DEPLOY}" == 'QA3')  {
                  sh '''
                  ls -ltr
                  '''
