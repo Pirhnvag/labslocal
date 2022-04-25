@@ -30,7 +30,7 @@ pipeline {
             steps {
 
               script{
-              print "SERVER_DEPLOY: " + env.hostsIPsMap
+              print "SERVER_DEPLOY : " + env.hostsIPsMap
                if ("${SERVER_DEPLOY}" == '10.10.10.10') {
                  sh '''
                  ls
