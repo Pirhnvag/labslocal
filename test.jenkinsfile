@@ -18,11 +18,6 @@ SERVER_DEPLOY = env.seleccioneAmbiente
 pipeline { 
     agent any  
     stages {
-      stage('GIT') {
-        steps {
-          git branch: "TESTING", url: 'https://github.com/Pirhnvag/labslocal.git'
-            }
-           }
       stage('Deploy') {
         steps {
           script{
