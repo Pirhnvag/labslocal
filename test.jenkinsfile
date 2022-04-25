@@ -12,7 +12,8 @@ def hostsIPsMap = [
 
 def SERVER_DEPLOY=null 
 SERVER_DEPLOY = hostsIPsMap($hostsIPsMap)
-
+def hostsIPsMap=null
+hostsIPsMap = SERVER_DEPLOY($hostsIPsMap)
 
 
 
