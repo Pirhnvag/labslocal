@@ -36,11 +36,17 @@ pipeline {
                  ls
                  '''
                }
+                else {
+                 sh '''
+                 ls -l
+                 '''
+                 print "SERVER_DEPLOY: " + env.seleccioneAmbiente
                if ("${SERVER_DEPLOY}" == 'QA2') {
                  sh '''
                  ls -ltr
                  '''
-               } else {
+               }
+                else {
                  sh '''
                  ls -l
                  '''
