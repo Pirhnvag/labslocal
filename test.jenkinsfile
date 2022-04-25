@@ -41,6 +41,11 @@ pipeline {
                  ls -l
                  '''
                   }
+                  else if ("${SERVER_DEPLOY}" == 'QA3')  {
+                 sh '''
+                 ls -ltr
+                 '''
+                  }
                }
             }
         }
