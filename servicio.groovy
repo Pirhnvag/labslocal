@@ -31,3 +31,4 @@ def job = pipelineJob('test') {
          }
      }
 def jobDescription = "job demo jenkins poc"
+    }
