@@ -25,5 +25,5 @@ def job = pipelineJob('test') {
             sandbox()
         }
     }
-}
+
 def jobDescription = "job demo jenkins onprem"
