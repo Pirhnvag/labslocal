@@ -33,17 +33,17 @@ pipeline {
               print "SERVER_DEPLOY: " + env.seleccioneAmbiente
                if ("${SERVER_DEPLOY}" == 'QA1') {
                  sh '''
-                 ls
+                 echo 'Realizando despliegue en ambiente QA1'
                  '''
                }
                 else if ("${SERVER_DEPLOY}" == 'QA2')  {
                  sh '''
-                 ls -l
+                 echo 'Realizando despliegue en ambiente QA2'
                  '''
                   }
                 else if ("${SERVER_DEPLOY}" == 'QA3')  {
                  sh '''
-                 ls -ltr
+                 echo 'Realizando despliegue en ambiente QA3'
                  '''
                   }
                }
