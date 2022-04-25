@@ -4,22 +4,19 @@
 def hostsIPsMap = [
   'QA1': '10.10.10.10',
   'QA2': '20.20.20.20',
-  'QA3': '30.30.30.30'
-
-
-]
-
+  'QA3': '30.30.30.30',
+  'QA4': '40.40.40.40',
+  'QA5': '50.50.50.50',
+  'QA6': '60.60.60.60',
+  'QA7': '70.70.70.70',
+  'QA8': '80.80.80.80',
+  'QA9': '90.90.90.90'
 
 def SERVER_DEPLOY=null 
 SERVER_DEPLOY = env.seleccioneAmbiente
 
-
-
-
 pipeline { 
-    agent any 
-    
-
+    agent any  
     stages {
         stage('Build') { 
             steps { 
@@ -44,6 +41,36 @@ pipeline {
                 else if ("${SERVER_DEPLOY}" == 'QA3')  {
                  sh '''
                  echo 'Realizando despliegue en ambiente QA3'
+                 '''
+                  }
+                else if ("${SERVER_DEPLOY}" == 'QA4')  {
+                 sh '''
+                 echo 'Realizando despliegue en ambiente QA4'
+                 '''
+                  }
+                else if ("${SERVER_DEPLOY}" == 'QA5')  {
+                 sh '''
+                 echo 'Realizando despliegue en ambiente QA5'
+                 '''
+                  }
+                else if ("${SERVER_DEPLOY}" == 'QA6')  {
+                 sh '''
+                 echo 'Realizando despliegue en ambiente QA6'
+                 '''
+                  }
+                else if ("${SERVER_DEPLOY}" == 'QA7')  {
+                 sh '''
+                 echo 'Realizando despliegue en ambiente QA7'
+                 '''
+                  }
+                else if ("${SERVER_DEPLOY}" == 'QA8')  {
+                 sh '''
+                 echo 'Realizando despliegue en ambiente QA8'
+                 '''
+                  }
+                else if ("${SERVER_DEPLOY}" == 'QA9')  {
+                 sh '''
+                 echo 'Realizando despliegue en ambiente QA9'
                  '''
                   }
                }
