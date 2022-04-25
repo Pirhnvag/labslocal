@@ -10,7 +10,7 @@ def job = pipelineJob('test') {
     parameters {
      stringParam('perfil_fuse', 'q9-servicio-test', 'Favor ingresar perfil')
      booleanParam('cargarproperties',false, 'indicar si desea cargar archivo de propiedades.')
-     choiceParam('hostsIPsMap', ['10.10.10.10', '20.20.20.20'])
+     choiceParam('hostsIPsMap', ['QA1', 'QA2'])
      }
 
     definition {
