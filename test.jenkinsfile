@@ -20,7 +20,7 @@ pipeline {
     stages {
       stage('GIT') {
         steps {
-          git branch: "${params.BRANCH}", url: 'https://github.com/Pirhnvag/labslocal.git'
+          git branch: "TESTING", url: 'https://github.com/Pirhnvag/labslocal.git'
             }
            }
       stage('Deploy') {
