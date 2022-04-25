@@ -1,12 +1,16 @@
 def job = pipelineJob('test') {
 
     definition {
-        cps {
-            script(readFileFromWorkspace('test.jenkinsfile'))
-            sandbox()
-        }
-    }
-
+      cps {
+        script(readFileFromWorkspace('test.jenkinsfile'))
+        sandbox()
+          }
+     }
+    scm {
+      git {
+        remote {
+          url 'git@https://github.com/Pirhnvag/labslocal.git'
+     } 
     parameters {
       stringParam('perfil_fuse', 'q9-servicio-test', 'Favor ingresar perfil')
       booleanParam('cargarproperties',false, 'Indicar si desea cargar archivo de propiedades.')
@@ -17,13 +21,13 @@ def job = pipelineJob('test') {
       description 'La rama de Git a seleccionar'
       type 'BRANCH'
       defaultValue 'TESTING'
-    }
-}
+               }
+     }
     definition {
-        cps {
-            script(readFileFromWorkspace('test.jenkinsfile'))
-            sandbox()
-        }
-    }
-}
-def jobDescription = "job demo jenkins onprem"
+      cps {
+        script(readFileFromWorkspace('test.jenkinsfile'))
+        sandbox()
+            }
+         }
+     }
+def jobDescription = "job demo jenkins poc"
