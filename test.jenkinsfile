@@ -11,7 +11,7 @@ def hostsIPsMap = [
   'QA7': '70.70.70.70',
   'QA8': '80.80.80.80',
   'QA9': '90.90.90.90'
-
+]
 def SERVER_DEPLOY=null 
 SERVER_DEPLOY = env.seleccioneAmbiente
 
