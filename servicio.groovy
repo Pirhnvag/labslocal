@@ -6,11 +6,6 @@ def job = pipelineJob('test') {
         sandbox()
           }
      }
-    scm {
-      git {
-        remote {
-          url 'git@https://github.com/Pirhnvag/labslocal.git'
-     } 
     parameters {
       stringParam('perfil_fuse', 'q9-servicio-test', 'Favor ingresar perfil')
       booleanParam('cargarproperties',false, 'Indicar si desea cargar archivo de propiedades.')
@@ -27,7 +22,7 @@ def job = pipelineJob('test') {
       cps {
         script(readFileFromWorkspace('test.jenkinsfile'))
         sandbox()
-            }
-         }
-     
+          }
+        }
+     }
 def jobDescription = "job demo jenkins poc"
