@@ -11,7 +11,7 @@ def hostsIPsMap = [
 
 
 def SERVER_DEPLOY=null 
-SERVER_DEPLOY = env.hostsIPsMap
+SERVER_DEPLOY = env.seleccioneAmbiente
 
 
 
@@ -30,7 +30,7 @@ pipeline {
             steps {
 
               script{
-              print "SERVER_DEPLOY: " + env.hostsIPsMap
+              print "SERVER_DEPLOY: " + env.seleccioneAmbiente
                if ("${SERVER_DEPLOY}" == 'QA1') {
                  sh '''
                  ls
