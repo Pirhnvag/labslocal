@@ -31,7 +31,7 @@ pipeline {
 
               script{
               print "SERVER_DEPLOY: " + env.hostsIPsMap
-               if ("${SERVER_DEPLOY}" == 'QA1') {
+               if ("${SERVER_DEPLOY}" == "QA1") {
                  sh '''
                  echo 'deploy en QA1'
                  '''
