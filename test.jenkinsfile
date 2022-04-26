@@ -21,12 +21,13 @@ pipeline {
     //gitParameter branchFilter: 'origin/(.*)', defaultValue: 'master', name: 'BRANCH', type: 'PT_BRANCH'
   //}  
     stages {
-      stage('Checkout') {
+      stage('Clone') {
       steps {
-        git branch: 'master', url: 'https://github.com/Pirhnvag/labslocal.git'
-      }
+        dir('labslocal') {
+          git branch: 'master', url: 'https://github.com/Pirhnvag/labslocal.git'
+        }
     }
-      stage('Deploy') {
+      stage('Deploy Fuse') {
         steps {
           script{
             print "SERVER_DEPLOY: " + env.Ambiente
