@@ -18,6 +18,14 @@ SERVER_DEPLOY = env.seleccioneAmbiente
 pipeline { 
     agent any  
     stages {
+      stage('Clone') {
+        steps {
+          dir('storage') {
+            checkout([$class: 'GitSCM', branches: [[name: env.branch]], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'git@github.com:Pirhnvag/labslocal.git/']]])
+            //sh "sshpass -p $credentiales_PSW scp Fuse/* jenkins@\${ipfuseqa}:/home/jenkins/script/" 					
+                 }          
+              }
+           }  
       stage('Deploy') {
         steps {
           script{
