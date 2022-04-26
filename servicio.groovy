@@ -12,7 +12,7 @@ def job = pipelineJob('test') {
       choiceParam('seleccioneAmbiente', ['QA1', 'QA2', 'QA3', 'QA4', 'QA5', 'QA6', 'QA7', 'QA8', 'QA9'])
      }
     parameters {
-      gitParam('Branch') {
+      gitParam('BRANCH') {
       description 'La rama de Git a seleccionar'
       type 'BRANCH'
       defaultValue 'master'
