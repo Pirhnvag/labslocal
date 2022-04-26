@@ -17,13 +17,13 @@ SERVER_DEPLOY = env.seleccioneAmbiente
 
 pipeline { 
     agent any
-    parameters {
-    gitParameter branchFilter: 'origin/(.*)', defaultValue: 'master', name: 'BRANCH', type: 'PT_BRANCH'
-  }  
+    //parameters {
+    //gitParameter branchFilter: 'origin/(.*)', defaultValue: 'master', name: 'BRANCH', type: 'PT_BRANCH'
+  //}  
     stages {
       stage('Checkout') {
       steps {
-        git branch: "${params.BRANCH}", url: 'https://github.com/Pirhnvag/labslocal.git'
+        git branch: 'master', url: 'https://github.com/Pirhnvag/labslocal.git'
       }
     }
       stage('Deploy') {
