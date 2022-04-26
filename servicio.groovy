@@ -15,14 +15,14 @@ def job = pipelineJob('test') {
       gitParam('Branch') {
       description 'La rama de Git a seleccionar'
       type 'BRANCH'
-      defaultValue ''
+      defaultValue 'TESTING'
                }
      }
     definition {
       cps {
         script(readFileFromWorkspace('test.jenkinsfile'))
         sandbox()
-          }
         }
-     }
+    }
+}
 def jobDescription = "job demo jenkins poc"
