@@ -1,4 +1,4 @@
-def job = pipelineJob('test') {
+def job = pipelineJob('job-poc') {
 
     definition {
       cps {
