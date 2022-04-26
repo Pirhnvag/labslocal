@@ -13,7 +13,7 @@ def hostsIPsMap = [
   'QA9': '90.90.90.90'
 ]
 def SERVER_DEPLOY=null 
-SERVER_DEPLOY = env.seleccioneAmbiente
+SERVER_DEPLOY = env.seleccionarambiente
 
 pipeline { 
     agent any  
@@ -22,7 +22,7 @@ pipeline {
       steps {
         script {
            // The below will clone your repo and will be checked out to master branch by default.
-           git credentialsId: 'credenciales-github-projel', url: 'https://github.com/Pirhnvag/labslocal.git', git branch: 'master'
+           git credentialsId: 'credenciales-github-projel', url: 'https://github.com/Pirhnvag/labslocal.git', git branch: 'testing'
            // Do a ls -lart to view all the files are cloned. It will be clonned. This is just for you to be sure about it.
            //sh "ls -lart ./*" 
            // List all branches in your repo. 
@@ -35,7 +35,7 @@ pipeline {
       stage('Deploy') {
         steps {
           script{
-            print "SERVER_DEPLOY: " + env.seleccioneAmbiente
+            print "SERVER_DEPLOY: " + env.seleccionarambiente
             if ("${SERVER_DEPLOY}" == 'QA1') {
             sh '''
             echo 'Realizando despliegue en ambiente QA1'
