@@ -16,21 +16,15 @@ def SERVER_DEPLOY=null
 SERVER_DEPLOY = env.seleccioneAmbiente
 
 pipeline { 
-    agent any  
+    agent any
+    parameters {
+    gitParameter branchFilter: 'origin/(.*)', defaultValue: 'master', name: 'BRANCH', type: 'PT_BRANCH'
+  }  
     stages {
-      stage('Checkout') {
+      stage('Example') {
       steps {
-        script {
-           // The below will clone your repo and will be checked out to master branch by default.
-           git credentialsId: 'credenciales-github-projel', url: 'https://github.com/Pirhnvag/labslocal.git' git branch: 'master'
-           // Do a ls -lart to view all the files are cloned. It will be clonned. This is just for you to be sure about it.
-           //sh "ls -lart ./*" 
-           // List all branches in your repo. 
-           //sh "git branch -a"
-           // Checkout to a specific branch in your repo.
-           //sh "git checkout branchname"
-          }
-       }
+        git branch: "${params.BRANCH}", url: 'https://github.com/Pirhnvag/labslocal.git'
+      }
     }
       stage('Deploy') {
         steps {
