@@ -14,8 +14,8 @@ def job = pipelineJob('job-poc') {
     parameters {
       gitParam('Branch') {
       description 'La rama de Git a seleccionar'
-      type 'BRANCH'
-      defaultValue 'master'
+      type 'PT_BRANCH'
+      defaultValue 'testing'
                }
      }
     //definition {
