@@ -23,8 +23,8 @@ pipeline {
     stages {
       stage('Clone') {
         steps {
-        dir('labslocal') {
-          git branch: 'master', url: 'https://github.com/Pirhnvag/labslocal.git'
+          dir('labslocal') {
+          git branch: 'testing', url: 'https://github.com/Pirhnvag/labslocal.git'
         }
       }
     }
