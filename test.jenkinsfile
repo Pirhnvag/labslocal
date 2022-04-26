@@ -23,7 +23,7 @@ pipeline {
     stages {
       stage('Checkout') {
       steps {
-        git branch: env.defaultValue, url: 'https://github.com/Pirhnvag/labslocal.git'
+        git branch: env.Branch, url: 'https://github.com/Pirhnvag/labslocal.git'
       }
     }
       stage('Deploy') {
