@@ -18,11 +18,11 @@ def job = pipelineJob('test') {
       defaultValue 'master'
                }
      }
-    definition {
-      cps {
-        script(readFileFromWorkspace('test.jenkinsfile'))
-        sandbox()
-        }
-    }
+    //definition {
+      //cps {
+        //script(readFileFromWorkspace('test.jenkinsfile'))
+        //sandbox()
+        //}
+    //}
 }
 def jobDescription = "job demo jenkins poc"
