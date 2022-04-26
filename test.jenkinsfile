@@ -21,12 +21,12 @@ pipeline {
     //gitParameter branchFilter: 'origin/(.*)', defaultValue: 'master', name: 'BRANCH', type: 'PT_BRANCH'
   //}  
     stages {
-      stage('Clone') {
-      steps {
-        dir('labslocal') {
-          git branch: 'master', url: 'https://github.com/Pirhnvag/labslocal.git'
-        }
-    }
+      //stage('Clone') {
+      //steps {
+        //dir('labslocal') {
+          //git branch: 'master', url: 'https://github.com/Pirhnvag/labslocal.git'
+        //}
+    //}
       stage('Deploy Fuse') {
         steps {
           script{
