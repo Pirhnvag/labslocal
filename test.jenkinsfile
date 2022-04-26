@@ -13,7 +13,7 @@ def hostsIPsMap = [
   'QA9': '90.90.90.90'
 ]
 def SERVER_DEPLOY=null 
-SERVER_DEPLOY = env.seleccionar_ambiente
+SERVER_DEPLOY = env.seleccioneAmbiente
 
 pipeline { 
     agent any  
@@ -35,7 +35,7 @@ pipeline {
       stage('Deploy') {
         steps {
           script{
-            print "SERVER_DEPLOY: " + env.seleccionar_ambiente
+            print "SERVER_DEPLOY: " + env.seleccioneAmbiente
             if ("${SERVER_DEPLOY}" == 'QA1') {
             sh '''
             echo 'Realizando despliegue en ambiente QA1'
