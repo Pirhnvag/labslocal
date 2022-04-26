@@ -21,7 +21,7 @@ pipeline {
       stage('Clone') {
         steps {
           dir('storage') {
-            checkout([$class: 'GitSCM', branches: [[name: env.Branch]], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'git@github.com:Pirhnvag/labslocal.git/']]])
+            checkout([$class: 'GitSCM', branches: [[name: Master]], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'git@github.com:Pirhnvag/labslocal.git/']]])
             //sh "sshpass -p $credentiales_PSW scp Fuse/* jenkins@\${ipfuseqa}:/home/jenkins/script/" 					
                  }          
               }
