@@ -20,7 +20,7 @@ pipelineJob('job-poc') {
       activeChoiceParam('seleccione_ambiente') {
         description('Favor seleccione ambiente')
         filterable()
-        choiceType('SINGLE_SELECT')
+        choiceType('RADIO')
         groovyScript {
           script('["Q5", "Q8"]')
           fallbackScript('"fallback choice"')
