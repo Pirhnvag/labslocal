@@ -1,82 +1,174 @@
 #!groovy
-
-
+//definir los servidores
 def hostsIPsMap = [
-  'QA1': '10.10.10.10',
-  'QA2': '20.20.20.20',
-  'QA3': '30.30.30.30',
-  'QA4': '40.40.40.40',
-  'QA5': '50.50.50.50',
-  'QA6': '60.60.60.60',
-  'QA7': '70.70.70.70',
-  'QA8': '80.80.80.80',
-  'QA9': '90.90.90.90'
+        '10.21.61.182': '10.21.61.182',
+        '10.21.61.183': '10.21.61.183',
+        '10.21.61.184': '10.21.61.184',
+        '10.20.73.20' : '10.20.73.20'
+      
 ]
-def SERVER_DEPLOY=null 
-SERVER_DEPLOY = env.Ambiente
+def SERVER_DEPLOY=null
+SERVER_DEPLOY = hostsIPsMap[env.seleccione_servidor]
+
+def AMBIENTE=null
+AMBIENTE = [env.seleccione_ambiente]
 
 pipeline { 
     agent any
-    //parameters {
-    //gitParameter branchFilter: 'origin/(.*)', defaultValue: 'master', name: 'BRANCH', type: 'PT_BRANCH'
-  //}  
+    //environment {
+      //branch="${branch}"
+      //credentiales = credentials('jenkinsfuseqa')
+      //IPFUSEQA5 = '10.10.10.10'
+      //ipfuseqaq7="${env.ip-fuse-q7}"
+      //pathfuse="${env.pathfuse}"
+      //profile="${env.perfil_fuse}"
+      //propertiesboolean="${env.cargarproperties}"
+      //nexusurl="http://10.20.78.193:8081/nexus/content/repositories/jboss-fuse-qa"
+      //redhatgaurl="http://10.20.78.193:8081/nexus/content/repositories/redhat-ga-repository/"
+      //reponame="wsevaluacionsolicitudesweb"
+      //jobname="${env.JOB_NAME}"
+      //repobash="storage"
+      //namesonar="wsevaluacionsolicitudeswebqa"
+      //ambiente="qa"
+//}
+
+      
     stages {
       stage('Clone') {
         steps {
-          dir('labslocal') {
-          git branch: 'testing', url: 'https://github.com/Pirhnvag/labslocal.git'
-        }
-      }
-    }
-      stage('Deploy Fuse') {
-        steps {
           script{
-            print "SERVER_DEPLOY: " + env.Ambiente
-            if ("${SERVER_DEPLOY}" == 'QA1') {
-            sh '''
-            echo 'Realizando despliegue en ambiente QA1'
+            print ("Copiar scripts en Servidor")
+            if ("${SERVER_DEPLOY}" == '10.21.61.182') {
+            dir('labslocal') {
+                git branch: 'testing', url: 'https://github.com/Pirhnvag/labslocal.git'
+                sh '''
+                   echo copiando scripts en servidor $seleccione_servidor ambiente $seleccione_ambiente
+                 '''
+              }  
+                  }
+            else if ("${SERVER_DEPLOY}" == '10.21.61.183')  {
+            dir('labslocal') {
+                git branch: 'testing', url: 'https://github.com/Pirhnvag/labslocal.git'
+                sh '''
+                   echo copiando scripts en servidor $seleccione_servidor ambiente $seleccione_ambiente
+                 '''
+              }
+                  }
+            else if ("${SERVER_DEPLOY}" == '10.21.61.184')  {
+            dir('labslocal') {
+                git branch: 'testing', url: 'https://github.com/Pirhnvag/labslocal.git'
+                sh '''
+                   echo copiando scripts en servidor $seleccione_servidor ambiente $seleccione_ambiente
                  '''
                }
-            else if ("${SERVER_DEPLOY}" == 'QA2')  {
+                  }
+            else if ("${SERVER_DEPLOY}" == '10.20.73.20')  {
+            dir('labslocal') {
+                git branch: 'testing', url: 'https://github.com/Pirhnvag/labslocal.git'
+                sh '''
+                   echo copiando scripts en servidor $seleccione_servidor ambiente $seleccione_ambiente
+                 '''
+               } 
+                  }
+            //else if ("${SERVER_DEPLOY}" == '50.50.50.50')  {
+            //ddir('labslocal') {
+              //  git branch: 'testing', url: 'https://github.com/Pirhnvag/labslocal.git'
+                //sh '''
+                  // echo copiando scripts en servidor 50.50.50.50
+                 //'''
+               //}
+                 // }
+            //else if ("${SERVER_DEPLOY}" == '60.60.60.60')  {
+            //dir('labslocal') {
+              //  git branch: 'testing', url: 'https://github.com/Pirhnvag/labslocal.git'
+                //sh '''
+                  // echo copiando scripts en servidor 60.60.60.60
+                 //'''
+               //}
+                 // }
+            //else if ("${SERVER_DEPLOY}" == '70.70.70.70')  {
+            //dir('labslocal') {
+              //  git branch: 'testing', url: 'https://github.com/Pirhnvag/labslocal.git'
+                //sh '''
+                  // echo copiando scripts en servidor 70.70.70.70
+                 //'''
+               //}
+                 // }
+            //else if ("${SERVER_DEPLOY}" == '80.80.80.80')  {
+            //dir('labslocal') {
+              //  git branch: 'testing', url: 'https://github.com/Pirhnvag/labslocal.git'
+                //sh '''
+                  // echo copiando scripts en servidor 80.80.80.80
+                 //'''
+               //}
+                 // }
+            //else if ("${SERVER_DEPLOY}" == '90.90.90.90')  {
+            //dir('labslocal') {
+              //  git branch: 'testing', url: 'https://github.com/Pirhnvag/labslocal.git'
+                //sh '''
+                  // echo copiando scripts en servidor 90.90.90.90
+                 //'''
+                //}
+            //}
+        }
+    }
+}
+      //stage('properties') {
+        //steps {
+         // script{                                  
+           // dir('storage') {
+						//		   sh "sshpass -p $credentiales_PSW scp Fuse/* jenkins@\${ipfuseqa}:/home/jenkins/script/"
+              //     sh "sh Fuse/properties.sh ${propertiesboolean} ${jobname} ${ambiente}"
+                           
+      stage('Deploy Fuse') {
+        steps {
+          script{ 
+            print ("Despliegue artefactos en Servidor FUSE")
+            if ("${SERVER_DEPLOY}" == '10.21.61.182') {
+            sh ''' 
+            echo Realizando despliegue en servidor: $seleccione_servidor ambiente $seleccione_ambiente
+                 '''
+               }
+            else if ("${SERVER_DEPLOY}" == '10.21.61.183')  {
             sh '''
-            echo 'Realizando despliegue en ambiente QA2'
+            echo Realizando despliegue en servidor: $seleccione_servidor ambiente $seleccione_ambiente
                  '''
                   }
-            else if ("${SERVER_DEPLOY}" == 'QA3')  {
+            else if ("${SERVER_DEPLOY}" == '10.21.61.184')  {
             sh '''
-            echo 'Realizando despliegue en ambiente QA3'
+            echo Realizando despliegue en servidor: $seleccione_servidor ambiente $seleccione_ambiente
                  '''
                   }
-            else if ("${SERVER_DEPLOY}" == 'QA4')  {
+            else if ("${SERVER_DEPLOY}" == '10.20.73.20')  {
             sh '''
-            echo 'Realizando despliegue en ambiente QA4'
+            echo Realizando despliegue en servidor: $seleccione_servidor ambiente $seleccione_ambiente
                  '''
                   }
-            else if ("${SERVER_DEPLOY}" == 'QA5')  {
-            sh '''
-            echo 'Realizando despliegue en ambiente QA5'
-                 '''
-                  }
-            else if ("${SERVER_DEPLOY}" == 'QA6')  {
-            sh '''
-            echo 'Realizando despliegue en ambiente QA6'
-                 '''
-                  }
-            else if ("${SERVER_DEPLOY}" == 'QA7')  {
-            sh '''
-            echo 'Realizando despliegue en ambiente QA7'
-                 '''
-                  }
-            else if ("${SERVER_DEPLOY}" == 'QA8')  {
-            sh '''
-            echo 'Realizando despliegue en ambiente QA8'
-                 '''
-                  }
-            else if ("${SERVER_DEPLOY}" == 'QA9')  {
-            sh '''
-            echo 'Realizando despliegue en ambiente QA9'
-                 '''
-                  }
+            //else if ("${SERVER_DEPLOY}" == '')  {
+            //sh '''
+            //echo 'Realizando despliegue en ambiente QA5'
+              //   '''
+                //  }
+            //else if ("${SERVER_DEPLOY}" == '')  {
+            //sh '''
+            //echo 'Realizando despliegue en ambiente QA6'
+              //   '''
+                //  }
+            //else if ("${SERVER_DEPLOY}" == '')  {
+            //sh '''
+            //echo 'Realizando despliegue en ambiente QA7'
+              //   '''
+                //  }
+            //else if ("${SERVER_DEPLOY}" == '')  {
+            //sh '''
+            //echo 'Realizando despliegue en ambiente QA8'
+              //   '''
+                //  }
+            //else if ("${SERVER_DEPLOY}" == '')  {
+            //sh '''
+            //echo 'Realizando despliegue en ambiente QA9'
+              //   '''
+                //  }
                }
             }
         }
