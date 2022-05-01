@@ -92,8 +92,8 @@ pipeline {
                  echo Realizando despliegue en servidor: $seleccione_servidor ambiente $seleccione_ambiente
                    '''
               }
+            }
           }
         }
       }
     }
-}
