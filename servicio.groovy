@@ -34,7 +34,7 @@ def job = pipelineJob('job-poc') {
             filterable()
             choiceType('RADIO')
             groovyScript {
-                script('if ( seleccione_ambiente == "Q5") { return ["10.21.61.182", "10.21.61.183", "10.21.61.184"] } else if ( seleccione_ambiente == "Q7") { return ["10.20.73.20", "10.20.73.21", "10.20.73.22"] }')
+                script('if ( seleccione_ambiente == "Q5") { return ["10.21.61.182", "10.21.61.183", "10.21.61.184"] } else if ( seleccione_ambiente == "Q7") { return ["10.20.73.20", "10.20.73.21", "10.20.73.22"] } ')
                 fallbackScript('"fallback choice"')
             }
             referencedParameter('seleccione_ambiente')
