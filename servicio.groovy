@@ -22,7 +22,7 @@ pipelineJob('job-poc') {
         filterable()
         choiceType('SINGLE_SELECT')
         groovyScript {
-          script('["Q5", "Q7"]')
+          script('["Q5", "Q8"]')
           fallbackScript('"fallback choice"')
         }
       }
@@ -33,7 +33,7 @@ pipelineJob('job-poc') {
       filterable()
       choiceType('RADIO')
       groovyScript {
-        script('if ( seleccione_ambiente == "Q5") { return ["10.21.61.182", "10.21.61.183", "10.21.61.184"] } else if ( seleccione_ambiente == "Q7") { return ["10.20.73.20", "10.20.73.21", "10.20.73.22"] } else if (states == "Punjab") { return ["Ludhiana", "Amritsar", "Jalandhar"] }')
+        script('if ( seleccione_ambiente == "Q5") { return ["10.21.61.182", "10.21.61.183", "10.21.61.184"] } else if ( seleccione_ambiente == "Q8") { return ["10.20.73.20", "10.20.73.21", "10.20.73.22"] } else if (states == "Punjab") { return ["Ludhiana", "Amritsar", "Jalandhar"] }')
         fallbackScript('"fallback choice"')
       }
       referencedParameter('seleccione_ambiente')
