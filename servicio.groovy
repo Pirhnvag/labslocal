@@ -22,7 +22,7 @@ pipelineJob('job-poc') {
         filterable()
         choiceType('RADIO')
         groovyScript {
-          script('["Q5", "Q7", "Q8"]')
+          script('["Q5", "Q7", "Q8", "Q9"]')
           fallbackScript('"fallback choice"')
         }
       }
