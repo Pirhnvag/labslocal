@@ -35,39 +35,37 @@ pipeline {
           script {
             print ('Copiar scripts en Servidor')
               if ("${SERVER_DEPLOY}" == '10.21.61.182') {
-    return;
-}
             dir('labslocal') {
               git branch: 'testing', url: 'https://github.com/Pirhnvag/labslocal.git'
                 sh '''
                   echo copiando scripts en servidor $seleccione_servidor ambiente $seleccione_ambiente
                    '''
             }
-              
-              if ("${SERVER_DEPLOY}" == '10.21.61.183')
+              }
+              else if ("${SERVER_DEPLOY}" == '10.21.61.183')  {
             dir('labslocal') {
               git branch: 'testing', url: 'https://github.com/Pirhnvag/labslocal.git'
                 sh '''
                   echo copiando scripts en servidor $seleccione_servidor ambiente $seleccione_ambiente
                    '''
             }
-              
-              else if ("${SERVER_DEPLOY}" == '10.21.61.184')  
+              }
+              else if ("${SERVER_DEPLOY}" == '10.21.61.184')  {
             dir('labslocal') {
               git branch: 'testing', url: 'https://github.com/Pirhnvag/labslocal.git'
                 sh '''
                   echo copiando scripts en servidor $seleccione_servidor ambiente $seleccione_ambiente
                    '''
             }
-              
-              else if ("${SERVER_DEPLOY}" == '10.20.73.20')  
+              }
+              else if ("${SERVER_DEPLOY}" == '10.20.73.20')  {
             dir('labslocal') {
               git branch: 'testing', url: 'https://github.com/Pirhnvag/labslocal.git'
                 sh '''
                   echo copiando scripts en servidor $seleccione_servidor ambiente $seleccione_ambiente
                    '''
             }
-              
+              }
           }
         }
       }
