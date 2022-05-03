@@ -27,6 +27,12 @@ pipelineJob('job-poc') {
       }
     }
   }
+  definition {
+    cps {
+      script(readFileFromWorkspace('test.jenkinsfile'))
+      sandbox()
+    }
+  }
   //parameters {
     //activeChoiceReactiveParam('seleccione_servidor') {
       //description('Favor seleccione servidor')
