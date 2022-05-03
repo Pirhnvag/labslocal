@@ -5,7 +5,9 @@ def hostsIPsMap = [
         '10.21.61.182': '10.21.61.182',
         '10.21.61.183': '10.21.61.183',
         '10.21.61.184': '10.21.61.184',
-        '10.20.73.20' : '10.20.73.20'
+        '10.20.73.20' : '10.20.73.20',
+        '10.20.73.21' : '10.20.73.21',
+        '10.20.73.22' : '10.20.73.22'
 ]
 def SERVER_DEPLOY = null
 SERVER_DEPLOY = hostsIPsMap[env.seleccione_servidor]
@@ -66,6 +68,22 @@ pipeline {
                        '''
             }
           }
+          else if ("${SERVER_DEPLOY}" == '10.20.73.21')  {
+                dir('labslocal') {
+                  git branch: 'testing', url: 'https://github.com/Pirhnvag/labslocal.git'
+                    sh '''
+                      echo copiando scripts en servidor $seleccione_servidor ambiente $seleccione_ambiente
+                       '''
+            }
+          }
+          else if ("${SERVER_DEPLOY}" == '10.20.73.22')  {
+                dir('labslocal') {
+                  git branch: 'testing', url: 'https://github.com/Pirhnvag/labslocal.git'
+                    sh '''
+                      echo copiando scripts en servidor $seleccione_servidor ambiente $seleccione_ambiente
+                       '''
+            }
+          }
         }
       }
     }
@@ -89,6 +107,16 @@ pipeline {
                    '''
               }
               else if ("${SERVER_DEPLOY}" == '10.20.73.20')  {
+                sh '''
+                  echo Realizando despliegue en servidor: $seleccione_servidor ambiente $seleccione_ambiente
+                   '''
+              }
+              else if ("${SERVER_DEPLOY}" == '10.20.73.21')  {
+                sh '''
+                  echo Realizando despliegue en servidor: $seleccione_servidor ambiente $seleccione_ambiente
+                   '''
+              }
+              else if ("${SERVER_DEPLOY}" == '10.20.73.22')  {
                 sh '''
                   echo Realizando despliegue en servidor: $seleccione_servidor ambiente $seleccione_ambiente
                    '''
