@@ -5,28 +5,28 @@ pipelineJob('job-poc') {
       sandbox()
     }
   }
-    parameters {
-      stringParam('perfil_fuse', 'ingresarambiente-proceso-seguro-venta', 'Favor ingresar perfil')
-      booleanParam('cargarproperties', false, 'Indicar si desea cargar archivo de propiedades.')
+  parameters {
+    stringParam('perfil_fuse', 'ingresarambiente-proceso-seguro-venta', 'Favor ingresar perfil')
+    booleanParam('cargarproperties', false, 'Indicar si desea cargar archivo de propiedades.')
+  }
+  parameters {
+    gitParam('Branch') {
+    description 'La rama de Git a seleccionar'
+    type 'BRANCH'
+    defaultValue 'testing'
     }
-    parameters {
-      gitParam('Branch') {
-      description 'La rama de Git a seleccionar'
-      type 'BRANCH'
-      defaultValue 'testing'
+  }
+  parameters {
+    activeChoiceParam('seleccione_ambiente') {
+      description('Favor seleccione ambiente')
+      filterable()
+      choiceType('RADIO')
+      groovyScript {
+        script('["Q5", "Q7", "Q8", "Q9"]')
+        fallbackScript('"fallback choice"')
       }
     }
-    parameters {
-      activeChoiceParam('seleccione_ambiente') {
-        description('Favor seleccione ambiente')
-        filterable()
-        choiceType('RADIO')
-        groovyScript {
-          script('["Q5", "Q7", "Q8", "Q9"]')
-          fallbackScript('"fallback choice"')
-        }
-      }
-    }
+  }
   parameters {
     activeChoiceReactiveParam('seleccione_servidor') {
       description('Favor seleccione servidor')
@@ -40,8 +40,8 @@ pipelineJob('job-poc') {
     //referencedParameter('BOOLEAN-PARAM-2')
     }
   }
-    authorization {
-        permission('hudson.model.Item.Build', 'q7-profile')
-    }
+  authorization {
+    permission('hudson.model.Item.Build', 'q7-profile')
+  }
 }
 
