@@ -8,7 +8,7 @@
     //    '10.20.73.20' : '10.20.73.20',
     //    '10.20.73.21' : '10.20.73.21',
     //    '10.20.73.22' : '10.20.73.22'
-]
+//]
 def SERVER_DEPLOY = null
 SERVER_DEPLOY = [env.seleccione_ambiente]
 
