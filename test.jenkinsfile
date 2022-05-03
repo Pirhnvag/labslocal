@@ -19,9 +19,9 @@ pipeline {
     //credentiales = credentials('jenkinsfuseqa')
     //IPFUSEQA5 = '10.10.10.10'
       ipfuseq5_1= "${ipfuseq5a1}"
-      ipfuseq5_2= '${ipfuseq5b2}'
-      ipfuseq5_3= '${ipfuseq5c3}'
-      ipfusetest= '11.11.11.11'
+      ipfuseq5_2= "${ipfuseq5b2}"
+      ipfuseq5_3= "${ipfuseq5c3}"
+      //ipfusetest= '11.11.11.11'
       //ipfuseq5b = "${env.ip-fuse-q5b2}"
     //ipfuseq5c = "${env.ip-fuse-q5c3}"
     //pathfuse="${env.pathfuse}"
@@ -43,11 +43,11 @@ pipeline {
                 dir('labslocal') {
                   git branch: 'testing', url: 'https://github.com/Pirhnvag/labslocal.git'
                     sh '''
-                      echo realizando ssh en servidor  $ipfusetest ambiente $seleccione_ambiente
-                      sleep 3
                       echo realizando ssh en servidor  $ipfuseq5_1 ambiente $seleccione_ambiente
                       sleep 3
                       echo realizando ssh en servidor  $ipfuseq5_2 ambiente $seleccione_ambiente
+                      sleep 3
+                      echo realizando ssh en servidor  $ipfuseq5_3 ambiente $seleccione_ambiente
                        '''
             }
           }
@@ -60,11 +60,11 @@ pipeline {
             print ('Despliegue artefactos en Servidor FUSE')
               if ("$seleccione_ambiente" == 'Q5A') {
                 sh '''
-                      echo realizando despliegue en servidor  $ipfuseq5a ambiente $seleccione_ambiente
+                      echo realizando despliegue en servidor  $ipfuseq5_1 ambiente $seleccione_ambiente
                       sleep 3
-                      echo realizando despliegue en servidor  $ipfuseq5b ambiente $seleccione_ambiente
+                      echo realizando despliegue en servidor  $ipfuseq5_2 ambiente $seleccione_ambiente
                       sleep 3
-                      echo realizando despliegue en servidor  $ipfuseq5c ambiente $seleccione_ambiente
+                      echo realizando despliegue en servidor  $ipfuseq5_3 ambiente $seleccione_ambiente
                    '''
               }
             }
