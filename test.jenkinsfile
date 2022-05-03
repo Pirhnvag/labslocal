@@ -33,7 +33,6 @@ pipeline {
       stage('Clone') {
         steps {
           script {
-            print ('Copiar scripts en Servidor')
               if ("${SERVER_DEPLOY}" == '10.21.61.182') {
             dir('labslocal') {
               git branch: 'testing', url: 'https://github.com/Pirhnvag/labslocal.git'
