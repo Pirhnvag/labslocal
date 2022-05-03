@@ -42,7 +42,7 @@ pipeline {
                 dir('labslocal') {
                   git branch: 'testing', url: 'https://github.com/Pirhnvag/labslocal.git'
                     sh '''
-                      echo realizando ssh en servidor  $ipfuseqaq7 ambiente $seleccione_ambiente
+                      echo realizando ssh en servidor  ${ipfuseqaq7} ambiente $seleccione_ambiente
                       sleep 3
                       echo realizando ssh en servidor  $ipfuseqaq3 ambiente $seleccione_ambiente
                       sleep 3
