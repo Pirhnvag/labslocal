@@ -49,7 +49,7 @@ pipeline {
                    '''
             }
               }
-              ("${SERVER_DEPLOY}" == '10.21.61.184')  {
+              else if ("${SERVER_DEPLOY}" == '10.21.61.184')  {
             dir('labslocal') {
               git branch: 'testing', url: 'https://github.com/Pirhnvag/labslocal.git'
                 sh '''
@@ -57,7 +57,7 @@ pipeline {
                    '''
             }
               }
-              ("${SERVER_DEPLOY}" == '10.20.73.20')  {
+              else if ("${SERVER_DEPLOY}" == '10.20.73.20')  {
             dir('labslocal') {
               git branch: 'testing', url: 'https://github.com/Pirhnvag/labslocal.git'
                 sh '''
