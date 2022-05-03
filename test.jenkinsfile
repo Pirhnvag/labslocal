@@ -41,14 +41,13 @@ pipeline {
                   echo copiando scripts en servidor $seleccione_servidor ambiente $seleccione_ambiente
                    '''
             }
-              else if ("${SERVER_DEPLOY}" == '10.21.61.183')  {
+              else if ("${SERVER_DEPLOY}" == '10.21.61.183') return;
             dir('labslocal') {
               git branch: 'testing', url: 'https://github.com/Pirhnvag/labslocal.git'
                 sh '''
                   echo copiando scripts en servidor $seleccione_servidor ambiente $seleccione_ambiente
                    '''
             }
-              }
               else if ("${SERVER_DEPLOY}" == '10.21.61.184')  {
             dir('labslocal') {
               git branch: 'testing', url: 'https://github.com/Pirhnvag/labslocal.git'
