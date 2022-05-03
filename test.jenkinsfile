@@ -43,7 +43,7 @@ pipeline {
                     sh '''
                       echo realizando ssh en servidor  $ipfuseqaq7 ambiente $seleccione_ambiente
                       sleep 3
-                      echo realizando ssh en servidor  $server1 ambiente $seleccione_ambiente
+                      echo realizando ssh en servidor  $ipfuseq5a ambiente $seleccione_ambiente
                       sleep 3
                       echo realizando ssh en servidor  $ipfuseq5c ambiente $seleccione_ambiente
                        '''
