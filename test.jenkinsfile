@@ -73,7 +73,7 @@ pipeline {
         steps {
           script {
             print ('Despliegue artefactos en Servidor FUSE')
-              if ("${SERVER_DEPLOY}" == '10.21.61.182') {
+              (if ("${SERVER_DEPLOY}" == '10.21.61.182')) {
             sh '''
                   echo Realizando despliegue en servidor: $seleccione_servidor ambiente $seleccione_ambiente
                    '''
