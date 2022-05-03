@@ -18,7 +18,8 @@ pipeline {
     //branch="${branch}"
     //credentiales = credentials('jenkinsfuseqa')
     //IPFUSEQA5 = '10.10.10.10'
-      ipfuseqaq7= '10.10.10.10'
+      ipfuseqaq7="${env.ip-fuse-q7}"
+      ipfuseqaq7= '11.11.11.11'
       ipfuseq5a = "${env.ip-fuse-q5a1}"
       //ipfuseq5b = "${env.ip-fuse-q5b2}"
     //ipfuseq5c = "${env.ip-fuse-q5c3}"
