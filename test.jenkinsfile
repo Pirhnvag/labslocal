@@ -18,9 +18,10 @@ pipeline {
     //branch="${branch}"
     //credentiales = credentials('jenkinsfuseqa')
     //IPFUSEQA5 = '10.10.10.10'
-      ipfuseqaq7= '${env.ip-fuse-q7}'
-      ipfuseqaq3= '11.11.11.11'
-      ipfuseq5a= '${env.ip-fuse-q5a1}'
+      ipfuseq5_1= '${ipfuseq5a1}'
+      ipfuseq5_2= '${ipfuseq5b2}'
+      ipfuseq5_3= '${ipfuseq5c3}'
+      ipfusetest= '11.11.11.11'
       //ipfuseq5b = "${env.ip-fuse-q5b2}"
     //ipfuseq5c = "${env.ip-fuse-q5c3}"
     //pathfuse="${env.pathfuse}"
@@ -42,11 +43,11 @@ pipeline {
                 dir('labslocal') {
                   git branch: 'testing', url: 'https://github.com/Pirhnvag/labslocal.git'
                     sh '''
-                      echo realizando ssh en servidor  '$ipfuseqaq7' ambiente $seleccione_ambiente
+                      echo realizando ssh en servidor  '$ipfusetest' ambiente $seleccione_ambiente
                       sleep 3
-                      echo realizando ssh en servidor  '$ipfuseqaq3' ambiente $seleccione_ambiente
+                      echo realizando ssh en servidor  '$ipfuseq5_1' ambiente $seleccione_ambiente
                       sleep 3
-                      echo realizando ssh en servidor  '$ipfuseq5a' ambiente $seleccione_ambiente
+                      echo realizando ssh en servidor  '$ipfuseq5_2' ambiente $seleccione_ambiente
                        '''
             }
           }
