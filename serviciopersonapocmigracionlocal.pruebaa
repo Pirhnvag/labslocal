@@ -41,15 +41,14 @@ sh "sshpass -p $credentiales_PSW scp Fuse/* jenkins@\${ipfuseq5_2}:/home/jenkins
 sh "sshpass -p $credentiales_PSW scp Fuse/* jenkins@\${ipfuseq5_3}:/home/jenkins/script/"  
 
                 }
-              }
+              
             }
-            if ("$seleccione_ambiente" == 'Q5A') {
+            
                 dir('servicio') {
                     checkout([$class: 'GitSCM', branches: [[name: env.branch]], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'git@bitbucket.org:coopeuch/'+ env.reponame +'.git']]]) 
 
-                
-                }            
-              }
+                  }
+                }                 
         } 
         stage('Build') {
         steps {
@@ -98,13 +97,12 @@ sh "sshpass -p $credentiales_PSW scp Fuse/* jenkins@\${ipfuseq5_3}:/home/jenkins
                             script{                  
                               if ("$seleccione_ambiente" == 'Q5A') {
                                  dir('storage') {
-								    sh "sshpass -p $credentiales_PSW scp Fuse/* jenkins@\${ipfuseq5_1}:/home/jenkins/script/"
+								                    sh "sshpass -p $credentiales_PSW scp Fuse/* jenkins@\${ipfuseq5_1}:/home/jenkins/script/"
                                     sh "sshpass -p $credentiales_PSW scp Fuse/* jenkins@\${ipfuseq5_2}:/home/jenkins/script/"
                                     sh "sshpass -p $credentiales_PSW scp Fuse/* jenkins@\${ipfuseq5_3}:/home/jenkins/script/"
                                     sh "sh Fuse/properties.sh ${propertiesboolean} ${jobname} ${ambiente}"
                                 }
-                              }
-                              if ("$seleccione_ambiente" == 'Q5A') {
+                              
                                 dir('servicio') {
 
                                    sh '''
@@ -114,13 +112,16 @@ sh "sshpass -p $credentiales_PSW scp Fuse/* jenkins@\${ipfuseq5_3}:/home/jenkins
 	cd /var/lib/jenkins/workspace/${jobname}/servicio/files/properties/${ambiente}
 	nameproperties=$(echo $(ls))
 	echo \${propertiesboolean}
-	sshpass -p $credentiales_PSW ssh jenkins@\${ipfuseqa} sh  /home/jenkins/script/fileprofile.sh \${propertiesboolean} \$nameproperties \${profile}
-	else
+	sshpass -p $credentiales_PSW ssh jenkins@\${ipfuseq5_1} sh  /home/jenkins/script/fileprofile.sh \${propertiesboolean} \$nameproperties \${profile}
+	sshpass -p $credentiales_PSW ssh jenkins@\${ipfuseq5_2} sh  /home/jenkins/script/fileprofile.sh \${propertiesboolean} \$nameproperties \${profile}
+  sshpass -p $credentiales_PSW ssh jenkins@\${ipfuseq5_3} sh  /home/jenkins/script/fileprofile.sh \${propertiesboolean} \$nameproperties \${profile}
+  else
 	echo "*************************************"
 	echo "SERVICIO NO TIENE ARCHIVO .PROPERTIES" 
 	echo "*************************************"                                             
 fi
                                     '''
+                                    }
                                   } 
                                 }
                             }

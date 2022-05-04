@@ -56,8 +56,7 @@ pipeline {
                     sh '''
                       echo clone de repositorio secundario de prueba
                        '''
-              }
-            
+            }
           }
         }
       }
