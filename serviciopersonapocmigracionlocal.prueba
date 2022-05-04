@@ -2,13 +2,13 @@ def job = pipelineJob('serviciopersonapocmigracionlocal') {
 
     parameters {
        //stringParam('perfil_fuse', 'q5-persona-datos', 'Favor ingresar perfil')
-       choiceParam('perfil_fuse', ['q5-persona-datos'], 'Perfil por defecto del servicio.')
+       choiceParam('perfil_fuse', ['q5a-persona-datos'], 'Perfil por defecto del servicio.')
        booleanParam('cargarproperties',false, 'Indicar si desea cargar archivo de propiedades.')
 
 	}
     definition {
         cps {
-            script(readFileFromWorkspace('src/main/groovy/projects/QA/serviciopersonapocmigracionlocal.jenkinsfile'))
+            script(readFileFromWorkspace('src/main/groovy/projects/QA/serviciopersonapocmigracion.jenkinsfile'))
             sandbox()
         }
     }

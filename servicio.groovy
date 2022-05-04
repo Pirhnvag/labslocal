@@ -7,12 +7,12 @@ pipelineJob('job-poc') {
   }
   parameters {
     //stringParam('perfil_fuse', 'ingresarambiente-proceso-seguro-venta', 'Favor ingresar perfil')
-    choiceParam('perfil_fuse', ['q5-persona-datos'], 'Perfil por defecto del servicio.')
+    choiceParam('perfil_fuse', ['q5a-persona-datos'], 'Perfil por defecto del servicio.')
     booleanParam('cargarproperties', false, 'Indicar si desea cargar archivo de propiedades.')
   }
   parameters {
-    gitParam('Branch') {
-    description 'La rama de Git a seleccionar'
+    gitParam('branch') {
+    description 'Favor seleccione branch'
     type 'BRANCH'
     defaultValue 'testing'
     }

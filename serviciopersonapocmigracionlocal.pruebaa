@@ -15,7 +15,7 @@ pipeline {
       ipfuseq5_2= "${ipfuseq5b2}"
       ipfuseq5_3= "${ipfuseq5c3}"
       pathfuse="${env.pathfuse}"
-      profile="${env.perfil_fuse}"
+      profile="${perfil_fuse}"
       propertiesboolean="${env.cargarproperties}"
       nexusurl="http://10.20.78.193:8081/nexus/content/repositories/jboss-fuse-qa"
       redhatgaurl="http://10.20.78.193:8081/nexus/content/repositories/redhat-ga-repository/"
