@@ -1,5 +1,9 @@
 def SERVER_DEPLOY = null
 SERVER_DEPLOY = [env.seleccione_ambiente]
+
+def PERFIL_FUSE = null
+PERFIL_FUSE = [env.perfil_fuse]
+
 pipeline {
   agent any
   

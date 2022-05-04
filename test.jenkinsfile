@@ -25,6 +25,7 @@ pipeline {
       ipfuseq5_1= "${ipfuseq5a1}"
       ipfuseq5_2= "${ipfuseq5b2}"
       ipfuseq5_3= "${ipfuseq5c3}"
+      profile="${perfil_fuse}"
       //ipfusetest= '11.11.11.11'
       //ipfuseq5b = "${env.ip-fuse-q5b2}"
     //ipfuseq5c = "${env.ip-fuse-q5c3}"
@@ -86,6 +87,7 @@ pipeline {
           script {
             sh '''
               echo $perfil_fuse
+              echo $profile
               '''
            }
          }
