@@ -47,7 +47,7 @@ pipelineJob('job-poc') {
     //}
   //}
   authorization {
-    permission('hudson.model.Item.Build', 'q7-profile')
+    permission('hudson.model.Item.Build', 'projel')
   }
 }
 
