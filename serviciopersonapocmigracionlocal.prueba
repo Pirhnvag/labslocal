@@ -7,7 +7,7 @@ def job = pipelineJob('serviciopersonapocmigracionlocal') {
 	}
     definition {
         cps {
-            script(readFileFromWorkspace('serviciopersonapocmigracionlocal.jenkinsfile'))
+            script(readFileFromWorkspace('src/main/groovy/projects/QA/serviciopersonapocmigracionlocal.jenkinsfile'))
             sandbox()
         }
     }

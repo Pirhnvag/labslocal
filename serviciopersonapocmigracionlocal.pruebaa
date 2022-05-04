@@ -43,9 +43,10 @@ sh "sshpass -p $credentiales_PSW scp Fuse/* jenkins@\${ipfuseq5_3}:/home/jenkins
                 }
               }
             }
+            if ("$seleccione_ambiente" == 'Q5A') {
                 dir('servicio') {
                     checkout([$class: 'GitSCM', branches: [[name: env.branch]], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'git@bitbucket.org:coopeuch/'+ env.reponame +'.git']]]) 
-                
+
                 
                 }            
               }
@@ -103,6 +104,7 @@ sh "sshpass -p $credentiales_PSW scp Fuse/* jenkins@\${ipfuseq5_3}:/home/jenkins
                                     sh "sh Fuse/properties.sh ${propertiesboolean} ${jobname} ${ambiente}"
                                 }
                               }
+                              if ("$seleccione_ambiente" == 'Q5A') {
                                 dir('servicio') {
 
                                    sh '''
@@ -119,7 +121,7 @@ sh "sshpass -p $credentiales_PSW scp Fuse/* jenkins@\${ipfuseq5_3}:/home/jenkins
 	echo "*************************************"                                             
 fi
                                     '''
-                                    
+                                  } 
                                 }
                             }
                         }    
@@ -127,7 +129,8 @@ fi
 
             stage('deploy fuse') {        
                     steps {
-                            script{    
+                            script{
+                              if ("$seleccione_ambiente" == 'Q5A') {   
                                     dir('servicio') {   
                                                                                  
                                                    
@@ -139,11 +142,13 @@ fi
                                             espacio=' '
                                             parametros=$groupid$espacio$artefactid$espacio$verion
                                             echo $parametros
-                                            sshpass -p \$credentiales_PSW ssh jenkins@\$ipfuseqa sh /home/jenkins/script/jenkinsdeployfuse.sh \$parametros \${profile}
+                                            sshpass -p \$credentiales_PSW ssh jenkins@\$ipfuseq5_1 sh /home/jenkins/script/jenkinsdeployfuse.sh \$parametros \${profile}
+                                            sshpass -p \$credentiales_PSW ssh jenkins@\$ipfuseq5_2 sh /home/jenkins/script/jenkinsdeployfuse.sh \$parametros \${profile}
+                                            sshpass -p \$credentiales_PSW ssh jenkins@\$ipfuseq5_3 sh /home/jenkins/script/jenkinsdeployfuse.sh \$parametros \${profile}
                                             
                                           '''
                                           
-                                          
+                                      }   
                                     }
                                 }
                             }                                       
