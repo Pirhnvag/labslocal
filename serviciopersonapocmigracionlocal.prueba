@@ -13,15 +13,9 @@ def job = pipelineJob('serviciopersonapocmigracionlocal') {
     }
 }
 def jobDescription = "job demo jenkins onprem"
-//helpers.Build_Job_Helper.addGitParameter_branch_testing(job,'PT_BRANCH','DESCENDING_SMART','.*','branch')
-//helpers.Build_Job_Helper.general_config_qa(job, jobDescription)
-    parameters {
-      gitParam('Branch') {
-      description 'La rama de Git a seleccionar'
-      type 'BRANCH'
-      defaultValue 'testing'
-    }
-  }
+helpers.Build_Job_Helper.addGitParameter_branch_testing(job,'PT_BRANCH','DESCENDING_SMART','.*','branch')
+helpers.Build_Job_Helper.general_config_qa(job, jobDescription)
+    
     parameters {
       activeChoiceParam('seleccione_ambiente') {
         description('Favor seleccione ambiente')

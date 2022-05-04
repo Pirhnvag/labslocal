@@ -6,7 +6,8 @@ pipelineJob('job-poc') {
     }
   }
   parameters {
-    stringParam('perfil_fuse', 'ingresarambiente-proceso-seguro-venta', 'Favor ingresar perfil')
+    //stringParam('perfil_fuse', 'ingresarambiente-proceso-seguro-venta', 'Favor ingresar perfil')
+    choiceParam('myParameterName', ['option 1 (default)', 'option 2', 'option 3'], 'my description')
     booleanParam('cargarproperties', false, 'Indicar si desea cargar archivo de propiedades.')
   }
   parameters {
@@ -47,7 +48,7 @@ pipelineJob('job-poc') {
     //}
   //}
   authorization {
-    permission('hudson.model.Item.Build', 'projel')
+    permission('hudson.model.Item.Build', 'q7-profile')
   }
 }
 

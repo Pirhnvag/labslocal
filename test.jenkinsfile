@@ -1,5 +1,7 @@
 #!groovy
 //definir los servidores
+
+10.21.61.182
 /* groovylint-disable-next-line CompileStatic */
 //def hostsIPsMap = [
   //      '10.21.61.182': '10.21.61.182',
