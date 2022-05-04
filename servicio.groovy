@@ -7,7 +7,7 @@ pipelineJob('job-poc') {
   }
   parameters {
     //stringParam('perfil_fuse', 'ingresarambiente-proceso-seguro-venta', 'Favor ingresar perfil')
-    choiceParam('myParameterName', ['option 1 (default)', 'option 2', 'option 3'], 'my description')
+    choiceParam('perfil_fuse', ['q5-persona-datos'], 'Perfil por defecto del servicio.')
     booleanParam('cargarproperties', false, 'Indicar si desea cargar archivo de propiedades.')
   }
   parameters {
