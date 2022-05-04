@@ -84,7 +84,9 @@ pipeline {
         stage('Capture env perfil fuse') {
         steps {
           script {
-            print ($perfil_fuse)
+            sh '''
+              echo $perfil_fuse
+              '''
            }
          }
        }
