@@ -45,7 +45,7 @@ pipeline {
         stage('Clone') {
           steps {
             script {
-              if ("$seleccione_ambiente" == 'Q5A') {
+              if ("$seleccione_ambiente" == 'q5a') {
                 dir('labslocal') {
                   git branch: 'testing', url: 'https://github.com/Pirhnvag/labslocal.git'
                     sh '''
@@ -54,7 +54,7 @@ pipeline {
                       echo realizando ssh en servidor  $ipfuseq5_2 ambiente $seleccione_ambiente
                       sleep 3
                       echo realizando ssh en servidor  $ipfuseq5_3 ambiente $seleccione_ambiente
-                      echo $PROFILE
+                      echo $profile
                        '''
             }
            
