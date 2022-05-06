@@ -31,7 +31,7 @@ pipeline {
       //ipfuseq5b = "${env.ip-fuse-q5b2}"
     //ipfuseq5c = "${env.ip-fuse-q5c3}"
     //pathfuse="${env.pathfuse}"
-    profile=("$seleccione_ambiente"+"$perfil_fuse")
+    profile=("$seleccione_ambiente"+"-"+"$perfil_fuse")
     //propertiesboolean="${env.cargarproperties}"
     //nexusurl="http://10.20.78.193:8081/nexus/content/repositories/jboss-fuse-qa"
     //redhatgaurl="http://10.20.78.193:8081/nexus/content/repositories/redhat-ga-repository/"
