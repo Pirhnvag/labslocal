@@ -15,6 +15,7 @@ SERVER_DEPLOY = [env.seleccione_ambiente]
 
 def PERFIL_FUSE = null
 PERFIL_FUSE = [env.perfil_fuse]
+def PROFILE = $seleccione_ambiente$perfil_fuse
 
 pipeline {
     agent any
@@ -25,12 +26,12 @@ pipeline {
       ipfuseq5_1= "${ipfuseq5a1}"
       ipfuseq5_2= "${ipfuseq5b2}"
       ipfuseq5_3= "${ipfuseq5c3}"
-      profile="${perfil_fuse}"
+      //profile="${perfil_fuse}"
       //ipfusetest= '11.11.11.11'
       //ipfuseq5b = "${env.ip-fuse-q5b2}"
     //ipfuseq5c = "${env.ip-fuse-q5c3}"
     //pathfuse="${env.pathfuse}"
-    //profile="${env.perfil_fuse}"
+    profile="$PROFILE"
     //propertiesboolean="${env.cargarproperties}"
     //nexusurl="http://10.20.78.193:8081/nexus/content/repositories/jboss-fuse-qa"
     //redhatgaurl="http://10.20.78.193:8081/nexus/content/repositories/redhat-ga-repository/"
@@ -53,6 +54,7 @@ pipeline {
                       echo realizando ssh en servidor  $ipfuseq5_2 ambiente $seleccione_ambiente
                       sleep 3
                       echo realizando ssh en servidor  $ipfuseq5_3 ambiente $seleccione_ambiente
+                      echo $PROFILE
                        '''
             }
            
