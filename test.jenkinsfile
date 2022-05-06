@@ -15,7 +15,7 @@ SERVER_DEPLOY = [env.seleccione_ambiente]
 
 def PERFIL_FUSE = null
 PERFIL_FUSE = [env.perfil_fuse]
-def PROFILE = '$seleccione_ambiente' + '$perfil_fuse'
+def PROFILE = ["$SERVER_DEPLOY$PERFIL_FUSE"]
 
 pipeline {
     agent any
@@ -49,11 +49,6 @@ pipeline {
                 dir('labslocal') {
                   git branch: 'testing', url: 'https://github.com/Pirhnvag/labslocal.git'
                     sh '''
-                      echo realizando ssh en servidor  $ipfuseq5_1 ambiente $seleccione_ambiente
-                      sleep 3
-                      echo realizando ssh en servidor  $ipfuseq5_2 ambiente $seleccione_ambiente
-                      sleep 3
-                      echo realizando ssh en servidor  $ipfuseq5_3 ambiente $seleccione_ambiente
                       echo $profile
                        '''
             }
