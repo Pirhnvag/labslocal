@@ -15,7 +15,7 @@ SERVER_DEPLOY = [env.seleccione_ambiente]
 
 def PERFIL_FUSE = null
 PERFIL_FUSE = [env.perfil_fuse]
-def PROFILE = $SERVER_DEPLOY$PERFIL_FUSE
+def PROFILE = "$SERVER_DEPLOY""$PERFIL_FUSE"
 
 pipeline {
     agent any
