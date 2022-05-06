@@ -1,4 +1,4 @@
-def job = pipelineJob('serviciopersonapocmigracionlocal') {
+def job = pipelineJob('QA/serviciopersonapocmigracion') {
 
     parameters {
        //stringParam('perfil_fuse', 'q5-persona-datos', 'Favor ingresar perfil')
