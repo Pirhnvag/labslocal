@@ -17,7 +17,7 @@ pipelineJob('job-poc') {
     }
   }
   parameters {
-    stringParam('perfil_fuse', ' ', 'Favor ingresar perfil')
+    stringParam('perfil_fuse', '', 'Favor ingresar perfil')
     //choiceParam('perfil_fuse', ['q5a-persona-datos'], 'Perfil por defecto del servicio.')
     booleanParam('cargarproperties', false, 'Indicar si desea cargar archivo de propiedades.')
   }
