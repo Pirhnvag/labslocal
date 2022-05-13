@@ -48,7 +48,8 @@ pipeline {
             dir('labslocal') {
                if (SERVER_DEPLOY ==  'null') {
                 error("El campo Destino es obligatorio")
-  }               else if (SERVER_DEPLOY ==  '10.21.61.183') {  
+  }               
+  else if (SERVER_DEPLOY ==  '10.21.61.183') {  
                   git branch: 'testing', url: 'https://github.com/Pirhnvag/labspirhnvag.git'
                     sh '''
                       echo clone de repositorio secundario de prueba
@@ -63,7 +64,7 @@ pipeline {
         steps {
           script {
             print ('Despliegue artefactos en Servidor FUSE')
-              if (SERVER_DEPLOY ==  '10.21.61.183) {
+              if (SERVER_DEPLOY ==  '10.21.61.183') {
                 sh '''
                       echo realizando despliegue en servidor  $SERVER_DEPLOY
                       sleep 3
