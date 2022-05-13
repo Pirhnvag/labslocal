@@ -1,21 +1,13 @@
 #!groovy
-//definir los servidores
+def hostsIPsMap = [
+  'q5a': '10.21.61.183',
+  'q7a':'10.20.73.21',
+  'q8a': '10.20.73.160',
+  'seleccione': 'null'   
+  ]
 
-/* groovylint-disable-next-line CompileStatic */
-//def hostsIPsMap = [
-  //      '10.21.61.182': '10.21.61.182',
-    //    '10.21.61.183': '10.21.61.183',
-    //    '10.21.61.184': '10.21.61.184',
-    //    '10.20.73.20' : '10.20.73.20',
-    //    '10.20.73.21' : '10.20.73.21',
-    //    '10.20.73.22' : '10.20.73.22'
-//]
-def SERVER_DEPLOY = null
-SERVER_DEPLOY = [env.seleccione_ambiente]
-
-def PERFIL_FUSE = null
-PERFIL_FUSE = [env.perfil_fuse]
-//def PROFILE = "$SERVER_DEPLOY"+"$PERFIL_FUSE"
+def SERVER_DEPLOY=null
+SERVER_DEPLOY = hostsIPsMap[DESTINO]
 
 pipeline {
     agent any
@@ -23,9 +15,6 @@ pipeline {
     //branch="${branch}"
     //credentiales = credentials('jenkinsfuseqa')
     //IPFUSEQA5 = '10.10.10.10'
-      ipfuseq5_1= "${ipfuseq5a1}"
-      ipfuseq5_2= "${ipfuseq5b2}"
-      ipfuseq5_3= "${ipfuseq5c3}"
       //profile="${perfil_fuse}"
       //ipfusetest= '11.11.11.11'
       //ipfuseq5b = "${env.ip-fuse-q5b2}"
@@ -45,15 +34,22 @@ pipeline {
         stage('Clone') {
           steps {
             script {
-              if ("$seleccione_ambiente" == 'q5a') {
+
+              if (params.perfil_fuse  == '') {
+              error("El campo perfil_fuse es obligatorio")
+}             else {
                 dir('labslocal') {
                   git branch: 'testing', url: 'https://github.com/Pirhnvag/labslocal.git'
                     sh '''
                       echo $profile
                        '''
-            }
-           
+  }
+}
             dir('labslocal') {
+               if (SERVER_DEPLOY ==  'null') {
+                error("El campo Destino es obligatorio")
+  }               
+              else if (SERVER_DEPLOY ==  '10.21.61.183') {  
                   git branch: 'testing', url: 'https://github.com/Pirhnvag/labspirhnvag.git'
                     sh '''
                       echo clone de repositorio secundario de prueba
