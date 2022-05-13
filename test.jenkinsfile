@@ -63,13 +63,13 @@ pipeline {
         steps {
           script {
             print ('Despliegue artefactos en Servidor FUSE')
-              if ("$seleccione_ambiente" == 'Q5A') {
+              if (SERVER_DEPLOY ==  '10.21.61.183) {
                 sh '''
-                      echo realizando despliegue en servidor  $ipfuseq5_1 ambiente $seleccione_ambiente
+                      echo realizando despliegue en servidor  $SERVER_DEPLOY
                       sleep 3
-                      echo realizando despliegue en servidor  $ipfuseq5_2 ambiente $seleccione_ambiente
+                      echo realizando despliegue en servidor  $SERVER_DEPLOY
                       sleep 3
-                      echo realizando despliegue en servidor  $ipfuseq5_3 ambiente $seleccione_ambiente
+                      echo realizando despliegue en servidor  $SERVER_DEPLOY
                    '''
               }
             }
