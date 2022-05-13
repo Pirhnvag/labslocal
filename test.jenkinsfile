@@ -49,12 +49,11 @@ pipeline {
                if (SERVER_DEPLOY ==  'null') {
                 error("El campo Destino es obligatorio")
   }               
-  else if (SERVER_DEPLOY ==  '10.21.61.183') {  
+              else if (SERVER_DEPLOY ==  '10.21.61.183') {  
                   git branch: 'testing', url: 'https://github.com/Pirhnvag/labspirhnvag.git'
                     sh '''
                       echo clone de repositorio secundario de prueba
                        '''
-              }
             }
           }
         }
@@ -86,3 +85,4 @@ pipeline {
          }
        }
      }
+   }
