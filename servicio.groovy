@@ -1,21 +1,32 @@
 pipelineJob('job-poc') {
+  def userIDs = ['q7-profile','iascencio']
+
+        for (String singer : userIDs) {
+            authorization {
+                permissions("${singer}", [
+                    'hudson.model.Item.Build',
+                    'hudson.model.Item.Discover',
+                    'hudson.model.Item.Cancel',
+                    'hudson.model.Item.Read'
+                ])
+            }
+        }
   definition {
     cps {
       script(readFileFromWorkspace('test.jenkinsfile'))
       sandbox()
     }
   }
-  parameters {
-    activeChoiceParam('seleccione_ambiente') {
-      description('Favor seleccione ambiente')
-      filterable()
-      choiceType('RADIO')
-      groovyScript {
-        script('["q5a", "q7a"]')
-        fallbackScript('"fallback choice"')
-      }
-    }
-  }
+   parameters {
+                activeChoiceParam('DESTINO') {
+                  choiceType('SINGLE_SELECT')
+                  groovyScript {
+                    script('["seleccione:selected", "q5a", "q7a"]')
+                    fallbackScript('return ["ERROR"]')
+                description('Selecciona el Destino del proyecto. (Campo obligatorio)')
+                }
+            }
+        }
   parameters {
     stringParam('perfil_fuse', '', 'Favor ingresar perfil')
     //choiceParam('perfil_fuse', ['q5a-persona-datos'], 'Perfil por defecto del servicio.')
@@ -47,8 +58,8 @@ pipelineJob('job-poc') {
     //referencedParameter('BOOLEAN-PARAM-2')
     //}
   //}
-  authorization {
-    permission('hudson.model.Item.Build', 'q7-profile')
-  }
+  //authorization {
+    //permission('hudson.model.Item.Build', 'q7-profile')
+  //}
 }
 
