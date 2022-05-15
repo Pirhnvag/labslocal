@@ -34,7 +34,7 @@ pipeline {
         stage('Clone') {
           steps {
             script {
-              print ('perfil_seleecionado :' + profile )
+              print ('perfil_seleecionado :' + perfil_fuse )
               print ('ambiente seleccionado :' + DESTINO )
                 if (params.perfil_fuse  == '') {
                   error("El campo perfil_fuse es obligatorio")
