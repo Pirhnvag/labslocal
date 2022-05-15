@@ -65,7 +65,7 @@ pipeline {
             print ('Despliegue artefactos en Servidor FUSE')
               if (SERVER_DEPLOY ==  '10.21.61.183') {
                 sh '''
-                      echo realizando despliegue en servidor  $SERVER_DEPLOY
+                      echo "realizando despliegue en servidor: " + SERVER_DEPLOY
                       sleep 3
                       echo realizando despliegue en servidor  $SERVER_DEPLOY
                       sleep 3
