@@ -1,5 +1,5 @@
 pipelineJob('job-poc') {
-  def userIDs = ['q7-profile','iascencio']
+  def userIDs = ['q7-profile']
 
         for (String singer : userIDs) {
             authorization {
