@@ -34,10 +34,11 @@ pipeline {
         stage('Clone') {
           steps {
             script {
-
-              if (params.perfil_fuse  == '') {
-              error("El campo perfil_fuse es obligatorio")
-}             else {
+              print ('perfil_seleecionado :' + $profile )
+              print ('ambiente seleccionado :' + $DESTINO )
+                if (params.perfil_fuse  == '') {
+                  error("El campo perfil_fuse es obligatorio")
+}                   else {
                 dir('labslocal') {
                   git branch: 'testing', url: 'https://github.com/Pirhnvag/labslocal.git'
                     sh '''
@@ -62,7 +63,6 @@ pipeline {
       stage('Deploy Fuse') {
         steps {
           script {
-            print ('Despliegue artefactos en Servidor FUSE')
               if (SERVER_DEPLOY ==  '10.21.61.183') {
                 sh '''
                       echo "realizando despliegue en ambiente: " $DESTINO
