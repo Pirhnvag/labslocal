@@ -1,3 +1,5 @@
+//package com.michelin.cio.hudson.plugins.rolestrategy
+//package src.main.java.com.hudson
 import hudson.model.User
 import hudson.model.Hudson
 import hudson.security.AuthorizationStrategy
