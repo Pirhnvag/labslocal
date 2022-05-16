@@ -1,9 +1,9 @@
-import hudson.model.User
-import hudson.model.Hudson
-import hudson.security.AuthorizationStrategy
-import hudson.security.Permission
-import com.michelin.cio.hudson.plugins.rolestrategy.RoleBasedAuthorizationStrategy
-import com.michelin.cio.hudson.plugins.rolestrategy.RoleMap
+import src.main.java.hudson.model.User
+import src.main.java.hudson.model.Hudson
+import src.main.java.hudson.security.AuthorizationStrategy
+import src.main.java.hudson.security.Permission
+import src.main.java.com.michelin.cio.hudson.plugins.rolestrategy.RoleBasedAuthorizationStrategy
+import src.main.java.com.michelin.cio.hudson.plugins.rolestrategy.RoleMap
 
 AuthorizationStrategy strategy = Hudson.getInstance().getAuthorizationStrategy();
 
