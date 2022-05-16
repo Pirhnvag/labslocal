@@ -2,8 +2,8 @@ import hudson.model.User
 import hudson.model.Hudson
 import hudson.security.AuthorizationStrategy
 import hudson.security.Permission
-//import com.michelin.cio.hudson.plugins.rolestrategy.RoleBasedAuthorizationStrategy
-//import com.michelin.cio.hudson.plugins.rolestrategy.RoleMap
+import com.michelin.cio.hudson.plugins.rolestrategy.RoleBasedAuthorizationStrategy
+import com.michelin.cio.hudson.plugins.rolestrategy.RoleMap
 
 AuthorizationStrategy strategy = Hudson.getInstance().getAuthorizationStrategy();
 
