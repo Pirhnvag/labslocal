@@ -1,88 +1,28 @@
-#!groovy
-def hostsIPsMap = [
-  'q5a': '10.21.61.183',
-  'q7a':'10.20.73.21',
-  'q8a': '10.20.73.160',
-  'seleccione': 'null'   
-  ]
-
-def SERVER_DEPLOY=null
-SERVER_DEPLOY = hostsIPsMap[DESTINO]
-
 pipeline {
-    agent any
-      environment {
-    //branch="${branch}"
-    //credentiales = credentials('jenkinsfuseqa')
-    //IPFUSEQA5 = '10.10.10.10'
-      //profile="${perfil_fuse}"
-      //ipfusetest= '11.11.11.11'
-      //ipfuseq5b = "${env.ip-fuse-q5b2}"
-    //ipfuseq5c = "${env.ip-fuse-q5c3}"
-    //pathfuse="${env.pathfuse}"
-    profile=("$DESTINO"+"-"+"$env.perfil_fuse")
-    //propertiesboolean="${env.cargarproperties}"
-    //nexusurl="http://10.20.78.193:8081/nexus/content/repositories/jboss-fuse-qa"
-    //redhatgaurl="http://10.20.78.193:8081/nexus/content/repositories/redhat-ga-repository/"
-    //reponame="wsevaluacionsolicitudesweb"
-    //jobname="${env.JOB_NAME}"
-    //repobash="storage"
-    //namesonar="wsevaluacionsolicitudeswebqa"
-    //ambiente="qa"
-    }
-      stages {
-        stage('Clone') {
-          steps {
-            script {
-              print ('Perfil_Fuse_Seleecionado: ' + perfil_fuse )
-              print ('Ambiente Seleccionado: ' + DESTINO )
-                if (params.perfil_fuse  == '') {
-                  error("El campo perfil_fuse es obligatorio")
-}                   else {
-                dir('labslocal') {
-                  git branch: 'testing', url: 'https://github.com/Pirhnvag/labslocal.git'
-                    sh '''
-                      echo $profile
-                       '''
-  }
-}
-            dir('labslocal') {
-               if (SERVER_DEPLOY ==  'null') {
-                error("El campo Destino es obligatorio")
-  }               
-              else if (SERVER_DEPLOY ==  '10.21.61.183') {  
-                  git branch: 'testing', url: 'https://github.com/Pirhnvag/labspirhnvag.git'
-                    sh '''
-                      echo clone de repositorio secundario de prueba
-                       '''
-            }
-          }
-        }
+  agent any
+
+  stages {
+    stage('Build') {
+      steps {
+        sh 'npm install'
+        sh 'npm run build'
       }
     }
-      stage('Deploy Fuse') {
-        steps {
-          script {
-              if (SERVER_DEPLOY ==  '10.21.61.183') {
-                sh '''
-                      echo "realizando despliegue en ambiente: " $DESTINO
-                      sleep 3
-                      echo "realizando despliegue en ambiente: " $DESTINO
-                      sleep 3
-                      echo "realizando despliegue en ambiente: " $DESTINO
-                   '''
-              }
-            }
-          }
-        }
-        stage('Capture env perfil fuse') {
-        steps {
-          script {
-            sh '''
-              echo $profile
-              '''
-           }
-         }
-       }
-     }
-   }
+
+    stage('Test') {
+      steps {
+        sh 'npm run test'
+      }
+    }
+
+    stage('Deploy') {
+      when {
+        branch 'master'
+      }
+
+      steps {
+        sh 'npm run deploy'
+      }
+    }
+  }
+}
