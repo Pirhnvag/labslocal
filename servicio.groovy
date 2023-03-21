@@ -1,14 +1,3 @@
-def userId = currentBuild.getBuildCauses('hudson.model.Cause$UserIdCause')[0].userId
-fruit_fans = '["q5-profile"]'
-def code = sprintf("""
-if ( "%s" in %s) {
-    choices = ["q5a"]
-} else {
-    choices = ["q7a"]
-}
-return choices
-""",userId,fruit_fans)
-
 pipelineJob('job-poc') {
   definition {
     cps {
