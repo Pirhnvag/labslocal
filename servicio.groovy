@@ -3,5 +3,6 @@ def job = pipelineJob('test-job') {
     cps {
       script(readFileFromWorkspace('test.jenkinsfile'))
       sandbox()
+    }
   }
 }
