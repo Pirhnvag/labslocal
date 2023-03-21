@@ -1,99 +1,28 @@
-#!groovy
-//definir los servidores
-def hostsIPsMap = [
-        '10.21.61.182': '10.21.61.182',
-        '10.21.61.183': '10.21.61.183',
-        '10.21.61.184': '10.21.61.184',
-        '10.20.73.20' : '10.20.73.20'
-]
-SERVER_DEPLOY = null
-SERVER_DEPLOY = hostsIPsMap[env.seleccione_servidor]
-AMBIENTE = null
-AMBIENTE = [env.seleccione_ambiente]
 pipeline {
-    agent any
-    //environment {
-    //branch="${branch}"
-    //credentiales = credentials('jenkinsfuseqa')
-    //IPFUSEQA5 = '10.10.10.10'
-    //ipfuseqaq7="${env.ip-fuse-q7}"
-    //pathfuse="${env.pathfuse}"
-    //profile="${env.perfil_fuse}"
-    //propertiesboolean="${env.cargarproperties}"
-    //nexusurl="http://10.20.78.193:8081/nexus/content/repositories/jboss-fuse-qa"
-    //redhatgaurl="http://10.20.78.193:8081/nexus/content/repositories/redhat-ga-repository/"
-    //reponame="wsevaluacionsolicitudesweb"
-    //jobname="${env.JOB_NAME}"
-    //repobash="storage"
-    //namesonar="wsevaluacionsolicitudeswebqa"
-    //ambiente="qa"
-    //}
-    stages {
-      stage('Clone') {
-        steps {
-          script {
-            print ('Copiar scripts en Servidor')
-              if ("${SERVER_DEPLOY}" == '10.21.61.182') {
-            dir('labslocal') {
-              git branch: 'testing', url: 'https://github.com/Pirhnvag/labslocal.git'
-                sh '''
-                  echo copiando scripts en servidor $seleccione_servidor ambiente $seleccione_ambiente
-                   '''
-            }
-              }
-              else if ("${SERVER_DEPLOY}" == '10.21.61.183')  {
-            dir('labslocal') {
-              git branch: 'testing', url: 'https://github.com/Pirhnvag/labslocal.git'
-                sh '''
-                  echo copiando scripts en servidor $seleccione_servidor ambiente $seleccione_ambiente
-                   '''
-            }
-              }
-              else if ("${SERVER_DEPLOY}" == '10.21.61.184')  {
-            dir('labslocal') {
-              git branch: 'testing', url: 'https://github.com/Pirhnvag/labslocal.git'
-                sh '''
-                  echo copiando scripts en servidor $seleccione_servidor ambiente $seleccione_ambiente
-                   '''
-            }
-              }
-              else if ("${SERVER_DEPLOY}" == '10.20.73.20')  {
-            dir('labslocal') {
-              git branch: 'testing', url: 'https://github.com/Pirhnvag/labslocal.git'
-                sh '''
-                  echo copiando scripts en servidor $seleccione_servidor ambiente $seleccione_ambiente
-                   '''
-            }
-              }
-          }
-        }
-      }
-      stage('Deploy Fuse') {
-        steps {
-          script {
-            print ('Despliegue artefactos en Servidor FUSE')
-              if ("${SERVER_DEPLOY}" == '10.21.61.182') {
-            sh '''
-                  echo Realizando despliegue en servidor: $seleccione_servidor ambiente $seleccione_ambiente
-                   '''
-              }
-              else if ("${SERVER_DEPLOY}" == '10.21.61.183')  {
-            sh '''
-                  echo Realizando despliegue en servidor: $seleccione_servidor ambiente $seleccione_ambiente
-                   '''
-              }
-              else if ("${SERVER_DEPLOY}" == '10.21.61.184')  {
-            sh '''
-                 echo Realizando despliegue en servidor: $seleccione_servidor ambiente $seleccione_ambiente
-                   '''
-              }
-              else if ("${SERVER_DEPLOY}" == '10.20.73.20')  {
-            sh '''
-                 echo Realizando despliegue en servidor: $seleccione_servidor ambiente $seleccione_ambiente
-                   '''
-              }
-            }
-          }
-        }
+  agent any
+
+  stages {
+    stage('Build') {
+      steps {
+        sh 'npm install'
+        sh 'npm run build'
       }
     }
+
+    stage('Test') {
+      steps {
+        sh 'npm run test'
+      }
+    }
+
+    stage('Deploy') {
+      when {
+        branch 'master'
+      }
+
+      steps {
+        sh 'npm run deploy'
+      }
+    }
+  }
+}
